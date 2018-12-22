@@ -1,4 +1,4 @@
-package org.bridgelabz.functional;
+package org.bridgelabz.algorithm;
 
 import org.bridgelabz.utility.Utility;
 
@@ -10,8 +10,11 @@ public class InsertionSortForString {
 		System.out.println("Enter String elements");
 		for(int i = 0; i< size; i++)
 			str[i] = Utility.next();
+		long start = System.nanoTime();
 		String sort[] = Utility.insertionSortForString(str);
+		long stop = System.nanoTime();
 		for(int i=0; i<size; i++)
 			System.out.println(sort[i]+" ");
+		System.out.println("Time of Insertion Sort for Integer:"+(stop - start));
 	}
 }

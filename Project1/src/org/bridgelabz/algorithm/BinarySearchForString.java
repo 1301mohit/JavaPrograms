@@ -1,4 +1,4 @@
-package org.bridgelabz.functional;
+package org.bridgelabz.algorithm;
 
 import org.bridgelabz.utility.Utility;
 
@@ -12,7 +12,10 @@ public class BinarySearchForString {
 			strarr[i] = Utility.next();
 		System.out.println("Entered Searched String");
 		String searchedStr = Utility.next();
+		long start = System.nanoTime();
 		int index = Utility.binarySearchForString(strarr, searchedStr);
+		long stop = System.nanoTime();
 		System.out.print("Index of searched element:"+index);
+		System.out.println("Time of Binary Search for String:"+(stop-start));
 	}
 }

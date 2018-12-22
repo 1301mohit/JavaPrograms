@@ -2,13 +2,19 @@ package org.bridgelabz.functional;
 
 import org.bridgelabz.utility.Utility;
 
-public class Factors {
+/**
+ * By using this class print prime factors of number N.
+ * 
+ * @author  Mohit Kumar
+ * @version 1.0
+ * @since   19-12-2018
+ */
 
+public class Factors {
 	public static void main(String[] args) {
 		System.out.println("Enter number for prime factors");
-		int n = Utility.getInt();
-		String st = Utility.primeFactor(n);
-		System.out.println(st);
+		int number = Utility.getInt();
+		String str = Utility.primeFactor(number);
+		System.out.println(str);
 	}
-
 }

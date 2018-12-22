@@ -1,299 +1,348 @@
 package org.bridgelabz.utility;
 
-import java.time.Instant;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-/*
+/******************************************************************************************
  *  purpose: Declare Utility Class implements methods which are called by any other class. 
  * 
  *  @author  MohitKumar
  *  @version 1.0
- *  @since   12-12-2018
- */
+ *  @since   19-12-2018
+ ******************************************************************************************/
 
 public class Utility {
-	static Scanner sc = new Scanner(System.in);	//Create the static reference variable of Scanner class
+	static Scanner scanner = new Scanner(System.in);	//Create the static reference variable of Scanner class
 	
-	/*
-	 *  This method is used to get integer value from user
-	 *  @return integer
+	/**
+	 *  purpose: This method is used to get integer value from user.
+	 *  
+	 *  @return  integer
 	 */
 	
 	public static int getInt(){
-		int n = sc.nextInt();
-		return n;
+		int inputInteger = scanner.nextInt();
+		return inputInteger;
 	}
 	
-	/*
-	 * This method is used to get double value from user
-	 * @return double
+	/**
+	 * purpose: This method is used to get double value from user.
+	 * 
+	 * @return  double
 	 */
 	
 	public static double getDouble(){
-		double n = sc.nextDouble();
-		return n;
+		double inputDouble = scanner.nextDouble();
+		return inputDouble;
 	}
 	
-	/*
-	 * This method is used to get one word string from user
-	 * @return String
+	/**
+	 * purpose: This method is used to get one word string from user.
+	 * 
+	 * @return  String
 	 */
 	
 	public static String next(){
-		String n = sc.next();
-		return n;
+		String inputOneWordString = scanner.next();
+		return inputOneWordString;
 	}
 	
-	/*
-	 * This method is used to get sentence or word string from user
-	 * @return String
+	/**
+	 * purpose: This method is used to get sentence or word string from user.
+	 * 
+	 * @return  String
 	 */
 	
 	public static String nextLine(){
-		String n = sc.nextLine();
-		return n;
+		String inputString = scanner.nextLine();
+		return inputString;
 	}
 	
-	/*
-	 * This method is used to get float value from user
-	 * @return float
+	/**
+	 * purpose: This method is used to get float value from user.
+	 * 
+	 * @return  float
 	 */
 	
 	public static float getFloat(){
-		float n = sc.nextFloat();
-		return n;
+		float inputFloat = scanner.nextFloat();
+		return inputFloat;
 	}
 	
-	/*
-	 * This method is used to get byte value from user
-	 * @return byte
+	/**
+	 * purpose: This method is used to get byte value from user
+	 * 
+	 * @return  byte
 	 */
 	
 	public static Byte getByte(){
-		byte n = sc.nextByte();
-		return n;
+		byte inputByte = scanner.nextByte();
+		return inputByte;
 	}
 	
-	/*
-	 * This method is used to get boolean value from user
-	 * @return boolean
+	/**
+	 * purpose: This method is used to get boolean value from user.
+	 * 
+	 * @return  boolean
 	 */
 	
 	public static boolean getBoolean(){
-		boolean n = sc.nextBoolean();
-		return n;
+		boolean inputBoolean = scanner.nextBoolean();
+		return inputBoolean;
 	}
 	
-	/*
-	 * This method is used to get power of integer value
-	 * @param a This is the first parameter i.e base
-	 * @param b This is the second parameter i.e exponent
-	 * return integer
+	/**
+	 * purpose: This method is used to get power of integer value.
+	 * 
+	 * @param   integer base
+	 * @param   integer exponent
+	 * @return  integer
 	 */
 	
-	public static int pow(int a, int b) {
-		int p = 1;
-		while(b != 0) {
-			p = p * a;
-			b--;
+	public static int power(int base, int exponent) {
+		int product = 1;
+		while(exponent != 0) {
+			product = product * base;
+			exponent--;
 		}
-		return p;
+		return product;
 	}
 	
-	public static double pow(double a, double b) {
-		double p = 1;
-		while(b != 0) {
-			p = p * a;
-			b--;
-		}
-		return p;
-	}
-	/*
-	 * This method is used to replace <<username>> with the proper name of the user
-	 * @return String
+	/**
+	 * purpose: By using this method we can calculate the power of double.
+	 * 
+	 * @param   double base
+	 * @param   double exponent
+	 * return   double
 	 */
 	
-	public static String replaceString(){
-		String st = "Hello <<username>>, How are you?";
-		System.out.println("Username has minimum three character");
-		System.out.println("Enter Username");
-		String s = nextLine();
-		if(s.length() < 3) {
-			throw new IllegalArgumentException("Minimum length of the username is 3");
+	public static double power(double base, double exponent) {
+		double product = 1;
+		while(exponent != 0) {
+			product = product * base;
+			exponent--;
 		}
-		else {
-		String st1 = st.substring(0, 6);
-		String st2 = s;
-		String st3 = st.substring(18, 32);
+		return product;
+	}
+	
+	/**
+	 * purpose: This method is used to replace <<username>> with the proper name of the user
+	 * 
+	 * @return  String Whole String with the name of the user
+	 */
+	
+	public static String replaceString(String givenString, String username){
+		
+		//Store the String hello in string1
+		String string1 = givenString.substring(0, 6);
+		
+		//Store username in string2
+		String string2 = username;
+		
+		//Store ,How are you? in string3
+		String string3 = givenString.substring(18, 32);
+		
 		//Concatenate the strings
-		return (st1+st2+st3);
-		}
+		return (string1 + string2 + string3);
 	}
 	
 	/*
-	 * We use random function to get value between 0 and 1. If < 0.5 then tails otherwise heads
-	 * and we calculate percentage of heads and tails.
+	 * purpose: This method is used for get Percentage of Head vs Tails
+	 * 
+	 * @parameter Double number
 	 */
-	public static void flipCoin() {
+	
+	public static double[] flipCoin(double number) {
+		double percentage[] = new double[2];
 		int tail = 0,head = 0;
-		Random r = new Random();
-		System.out.println("The number of times to flip coin");
-		double n = getDouble();
-		for(int i=0; i<n; i++) {
-			double d =  r.nextDouble();
+		Random random = new Random();
+		
+		for(int i=0; i<number; i++) {
+			double d =  random.nextDouble();
 			if(d < 0.5)
+				
 				//count number of tail
 				tail++;
+			
 			else 
+				
 				//count number of head
 				head++;
 		}
-		System.out.println("Percentage of tail:"+(tail/n)*100);
-		System.out.println("Percentage of head:"+(head/n)*100);
+		percentage[0] = (tail/number)*100;
+		percentage[1] = (head/number)*100;
+		return percentage;
 	}
 	
-	/*
-	 * This method is used to identify user input year is leap year or not
-	 * @exception IllegalArgumentException if user input less than four digit or
-	 * greater than four digit
+	/**
+	 * Purpose: This method is used to identify user input year is leap year or not.
+	 * 
+	 * @param   year
+	 * @return  String
 	 */
 	public static String isLeapYear(int year) {
-		if(year > 9999 || year < 1000) //Check the digit of the year is four or not
-			throw new IllegalArgumentException("Please enter 4 digit number"); //Throw an exception if the year is not four digit
-		else {
-			if(year % 400 == 0 || year % 4 == 0 && year % 100 != 0 ) {	//To check the year is leap year or not
+		    if(year % 400 == 0 || year % 4 == 0 && year % 100 != 0 ) {
 				return (year+" is leap year");
 			}
 			else {
 				return (year+" is not leat year");
 			}
-		}
 	}
 	
-	/*
-	 * This method is used to print table of the power of 2 according to user input
-	 * in this method user input is exponent of the power
-	 * @exception IllegalArgumentException if exponent is greater than 30 and less than 0 
-	 * @param exponent This is the parameter of the method i.e the exponent of the power 
+	/**
+	 *Purpose: This method is used to print table of the power of 2 according to user input.
+	 * 
+	 * exponent This is the parameter of the method i.e the exponent of the power
+	 * @param Integer exponent
+	 * @return  Integer array 
 	 */
 	
-	public static void table(int exponent){
-		if(exponent > 31 || exponent < 0)
-			throw new IllegalArgumentException("The range of the exponent is 0 to 30");
-		else
-			for(int i=0; i<exponent+1; i++) {
-				System.out.println("2^"+i+"->"+Utility.pow(2,i));	//print the table of the power of 2
-			}
+	public static int[] table(int exponent){
+		int arr[] = new int[exponent+1];
+		System.out.println("Table of power of 2");
+		for(int i=0; i<=exponent; i++) {
+		arr[i] = Utility.power(2, i);	
+		}
+			return arr;
 	}
 	
-	/*
-	 * This method is used to calculate the harmonic number 
-	 * @exception IllegalArgumentException if user input 0 and less than 0 value
-	 * @param number this is the parameter which is taken by the user
-	 * @return double
+	/**
+	 * Purpose: This method is used to calculate the harmonic number 
+	 * 
+	 * @param   number this is the parameter which is taken by the user
+	 * @return  double
 	 */
 	
 	public static double harmonicNumber(int number) {
-		if(number <= 0)
-			throw new IllegalArgumentException("Please enter positive value");
-		else {
-			double s = 0;
-			//The sum of the harmonic series
-			for(int i=1; i<=number; i++) {
-				s = s + 1.0/i;
-			}
-			return s;
+		
+		double sum = 0;
+		
+		/*
+		 * The sum of the harmonic series
+		 */
+		for(int i=1; i<=number; i++) {
+			sum = sum + 1.0/i;
 		}
+		return sum;
 	}
 	
-	/*
-	 * This method is used to calculate the prime factor of the number
-	 * The square of the prime factor is less than n
-	 * @param n This is the parameter taken by the user
+	/**
+	 * Purpose: This method is used to calculate the prime factor of the number and the square of the prime factor is less than n
+	 * 
+	 * @param number This is the parameter taken by the user
 	 * @return String
 	 */
 	
-	public static String primeFactor(int n) {
-		int c = 0;
+	public static String primeFactor(int number) {
+		boolean flag;
 		String st = "";
-		for(int i=2; i*i<=n; i++) {	//By using this loop we calculate all factors of n
-			if(n % i == 0) {
-				for(int j=2; j<=i/2; j++) {	//By using this loop we calculate prime factors of n
-					c = 0;
-					if(i % j == 0) {
-						c = 1;
-						break;
-					}
-				}
-				if(c == 0) {
-					st = st + i + " ";
-				}
-			}
+		
+		//By using this loop we calculate all factors of n
+		for(int i=2; i*i<=number; i++) {	
+			flag = false;
+			//if factor is prime than true else false
+			if(number % i == 0) 
+				flag = isPrime(i);
+			//if flag is true than concatenate all prime factor in a single string
+			if(flag)
+				st = st + i + " ";
 		}
-	return st;
+		return st;
 	}
 	
-	/*
-	 * This method is used to print two dimensional array of integer value
-	 * @param i This is the two dimensional array parameter of integer type taken by the user
+	/**
+	 * Purpose: To check number is prime or not.
+	 * 
+	 * @param   number
+	 * @return  true or false
+	 */
+	
+	public static boolean isPrime(int number)
+	{
+		for(int j=2; j<=number/2; j++) {	
+			if(number % j == 0)
+				return false;
+		}
+		return true;
+	}
+	
+	/**
+	 * This method is used to print two dimensional array of integer value.
+	 * 
+	 * @param intArray This is the two dimensional array parameter of integer type taken by the user
 	 */
 
-	public static void itwoDArray(int[][] i) {
-		for(int j=0; j<i.length; j++) {
-			for(int k=0; k<i[0].length; k++) {
-				System.out.print(i[j][k]+" ");
+	public static void integerTwoDimensionArray(int[][] intArray) {
+		PrintWriter pw = new PrintWriter(System.out);
+		System.out.println("Elements of Integer type");
+		for(int j=0; j<intArray.length; j++) {
+			for(int k=0; k<intArray[0].length; k++) {
+				pw.print(intArray[j][k]+" ");
+				pw.flush();
 			}
 			System.out.println();
 		}
 	}
 	
-	/*
-	 * This method is used to print two dimensional array of double value
-	 * @param i This is the two dimensional array parameter of double type taken by the user
+    /**
+	 * Purpose: This method is used to print two dimensional array of double value.
+	 * 
+	 * @param doubleArray This is the two dimensional array parameter of double type taken by the user
 	 */
 	
-	public static void dtwoDArray(double[][] d) {
-		for(int j=0; j<d.length; j++) {
-			for(int k=0; k<d[0].length; k++) {
-				System.out.print(d[j][k]+" ");
+	public static void doubleTwoDimensionArray(double[][] doubleArray) {
+		PrintWriter pw = new PrintWriter(System.out);
+		System.out.println("Elements of double type");
+		for(int j=0; j<doubleArray.length; j++) {
+			for(int k=0; k<doubleArray[0].length; k++) {
+				pw.print(doubleArray[j][k]+" ");
+				pw.flush();
 			}
 			System.out.println();
 		}
 	}
 	
-	/*
+	/**
 	 * This method is used to print two dimensional array of boolean value
+	 * 
 	 * @param i This is the two dimensional array parameter of boolean type taken by the user
 	 */
 
-	public static void btwoDArray(boolean[][] bln) {
-		for(int j=0; j<bln.length; j++) {
-			for(int k=0; k<bln.length; k++) {
-				System.out.print(bln[j][k]+" ");
+	public static void booleanTwoDimensionArray(boolean[][] booleanArr) {
+		PrintWriter pw = new PrintWriter(System.out);
+		System.out.println("Elements of Boolean type");
+		for(int j=0; j<booleanArr.length; j++) {
+			for(int k=0; k<booleanArr.length; k++) {
+				pw.print(booleanArr[j][k]+" ");
+				pw.flush();
 			}
 			System.out.println();
 		}	
 	}
 	
-	public static double distance(int x, int y) {
+	/**
+	 * Purpose: Calculate distance from origin
+	 * 
+	 * @param  x integer distance from y-axis. 
+	 * @param  y integer distance from x-axis.
+	 * @return Double
+	 */
+	
+	public static double calculateDistance(int x, int y) {
 		return Math.sqrt(x*x + y*y);
 	}
 	
-	/*
+	/**
 	 * This method is used to calculate the roots of the quadratic equation
-	 * @param a This is the coefficient of x^2
-	 * @param b This is the coefficient of x
-	 * @param c This is the constant
-	 * @exception if the value of the a is equal to 0 then its throw an exception 
+	 * 
+	 * @param a double This is the coefficient of x^2
+	 * @param b double This is the coefficient of x
+	 * @param c double This is the constant
 	 */
+	
 	public static void root(double a, double b, double c) {
-		
-		//The coefficient of a is not zero
-		if(a == 0)
-			
-			throw new IllegalArgumentException("Please enter the value of the a is other than 0");
 		
 		//Calculate delta
 		double delta = b*b - 4*a*c;
@@ -306,7 +355,7 @@ public class Utility {
 		
 		System.out.println("Roots of the Quadratic equation");
 		
-		// condition for real and different roots
+		// if delta is positive then there are two real solutions.
 		if(delta > 0) {
 			root1 = (-b + Math.sqrt(delta))/(2*a);
 			root2 = (-b - Math.sqrt(delta))/(2*a);
@@ -314,15 +363,13 @@ public class Utility {
 			System.out.println("root2:"+root2);
 		}
 		
-		//condition for real and equal roots
+		//if delta is zero then there is one real solution.
 		else if(delta == 0) {
-			root1 = root2 = -b/(2*a);
-			//root2 = -b/2*a;
-			System.out.println("root1:"+root1);
-			System.out.println("root2:"+root2);
+			root1 = root2 =-b/(2*a);
+			System.out.println("root:"+root1);
 		}
 		
-		// if roots are not real 
+		// if delta is negative then there are two complex solutions.
 		else {
 			double p1 = (-b/(2*a));
 			double p2 = (Math.sqrt(-delta)/(2*a));
@@ -332,27 +379,24 @@ public class Utility {
 	}
 	
 	/**
-	 * This method is used to Play till the gambler is broke or has won
-	 * stake is input by the user i.e i
-	 * if stake is equal to 0 then its broke
-	 * stake is equal to goal then its won
+	 * Purpose: This method is used to play the gambler game till the gambler is broke or has won.
+	 * 
+	 * @return  double array
 	 */
-	public static void gambler() {
-		int win = 0, loss = 0;
+	
+	public static double[] gambler() {
+		double win = 0, loss = 0;
 		Random r = new Random();
-		System.out.println("Enter stake");
+		double arr[] = new double[3];
 		
-		//input stake
+		System.out.println("Enter stake");
 		int stake = Utility.getInt();
 		
 		System.out.println("Enter goal");
-		
-		//input goal
 		int goal = Utility.getInt();
 		
-		System.out.println("Enter number of times");
-		
 		//input number of times user want to play
+		System.out.println("Enter number of times");
 		int n = Utility.getInt();
 		
 		//for loop starts from 1 and ends when i is equal to number of times or stake is equal to 0 or stake is equal to goal
@@ -374,52 +418,54 @@ public class Utility {
 			}
 		}
 		
-		//Print number of times win
-		System.out.println("Number of wins:"+win);
+		//Number of times wins stores in arr[0]
+		arr[0] = win;
 		
-		//Print percentage of win
-		System.out.println("Percentage of win:"+(double)win/(win + loss)*100);
+		//Percentage of wins to stores in arr[1]
+		arr[1] = win/(win + loss)*100;
 		
-		//Print percentage of loss
-		System.out.println("Percentage of loss:"+(double)loss/(win + loss)*100);
+		//Percentage of loss to stores in arr[2]
+		arr[2] = loss/(win + loss)*100;
+		
+		return arr;
 	}
 	
 	/*
-	 * This method is used to check two string is anagram or not
-	 * @param s1 This is the first parameter i.e. first string
-	 * @param s2 This is the second parameter i.e. second string
+	 * Purpose: This method is used to check two string is anagram or not
+	 * 
+	 * @param   string1 String
+	 * @param   string2 String
 	 */
 
-	public static boolean isAnagram(String s1, String s2) {
+	public static boolean isAnagram(String string1, String string2) {
 		
 		//compare the length of two strings is equal or not
-		if(s1.length()!=s2.length())
+		if(string1.length()!=string2.length())
 			return false;
 		
 		//call count method and pass first string
-		int c1[] = count(s1);
+		int count1[] = count(string1);
 		
 		//call count method and pass second string
-		int c2[] = count(s2);
+		int count2[] = count(string2);
 		
 		//check the value of the two strings are equal or not
-		for(int i=0; i<c1.length; i++) {
-			if(c1[i] != c2[i])
+		for(int i=0; i<count1.length; i++) {
+			if(count1[i] != count2[i])
 				return false;
 		}
 		return true;
 	}
 	
 	/**
-	 * This method is used to count the alphabets present in the string and increment the index
-	 * of the count array
-	 * @param s s is a string
+	 * Purpose: This method is used to count the alphabets present in the string and increment the index of the count array.
+	 * @param string 
 	 * @return integer one dimensional array
 	 */
-	public static int[] count(String s) {
+	public static int[] count(String string) {
 		
 		//Convert String to character array
-		char c[] = s.toCharArray();
+		char c[] = string.toCharArray();
 		
 		//Define a count array and the size of the array is 36
 		int count[] = new int[36];
@@ -451,21 +497,21 @@ public class Utility {
 	}
 	
 	/*
-	 * This method is used to print the prime number series
-	 * @param n its defines the range of the prime number
+	 * Purpose: This method is used to print the prime number series
+	 * @param   number its defines the range of the prime number
 	 */
-	public static void prime(int n) {
+	/*public static void prime(int   number) {
 		
 		//This for loop is starts from 2 and iterate n times
-		for(int i=2; i<=n; i++) {
+		for(int i=2; i<=  number; i++) {
 			int c = 0;
 			
 			//This for loop is starts from 2 and iterate half of the value of the first loop
-			for(int j=2; j<=i/2; j++) {
+			for(int j=2; j<=i/2; j++) {*/
 				
 				/*If the reminder of the first loop value and the second loop value is 0
 				  then the value of the c is equal to 1 and break the inner loop*/
-				if(i % j == 0) {
+				/*if(i % j == 0) {
 					c = 1;
 					break;
 				}
@@ -475,12 +521,20 @@ public class Utility {
 			if(c == 0)
 				System.out.print(i+" ");
 		}
-	}
+	}*/
 	
-public static void prime1(int n) {
-		ArrayList<> arr = new ArrayList();
+	/**
+	 * Purpose: This method is used to print the prime numbers between 1 and parameter number.
+	 * 
+	 * @param   number user number
+	 * @return  ArrayList<Integer> Series of prime number
+	 */
+	
+	public static ArrayList<Integer> prime1(int number) {
+		ArrayList<Integer> prime = new ArrayList<Integer>();
+		
 		//This for loop is starts from 2 and iterate n times
-		for(int i=2; i<=n; i++) {
+		for(int i=2; i<=number; i++) {
 			int c = 0;
 			
 			//This for loop is starts from 2 and iterate half of the value of the first loop
@@ -496,17 +550,23 @@ public static void prime1(int n) {
 			
 			//if c is equal to 0 its mean the value of i is prime number and print the value of i
 			if(c == 0)
-				arr.add(i);
-				//System.out.print(i+" ");
+				prime.add(i);
 		}
+		return prime;
 	}
 	
-	public static boolean isPallindrom(int n) {
-		int t = n, r, s = 0;
-		while(n != 0) {
-			r = n % 10;
+	/**
+	 * Purpose: This method is used to check number is pallindrome or not
+	 * @param number
+	 * @return true or false
+	 */
+	
+	public static boolean isPallindrom(int number) {
+		int t = number, r, s = 0;
+		while(number != 0) {
+			r = number % 10;
 			s = s * 10 + r;
-			n = n / 10;
+			number = number / 10;
 		}
 		if(t == s)
 			return true;
@@ -514,26 +574,37 @@ public static void prime1(int n) {
 			return false;
 	}
 	
-	public static int[] bubbleSort(int[] a) {
+	/**
+	 * Purpose: This method is used to sort an integer array
+	 * @param   sort integer
+	 * @return  integer array
+	 */
+	
+	public static int[] bubbleSort(int[] sort) {
 		int temp;
 		boolean swapped;
-		int size = a.length;
+		int size = sort.length;
 		for(int i = 0; i < size; i++) {
 			swapped = false;
 			for(int j=0; j<size-i-1; j++) {
-				if(a[j] > a[j + 1]) {
-					temp = a[j];
-					a[j] = a[j + 1];
-					a[j + 1] = temp;
+				if(sort[j] > sort[j + 1]) {
+					temp = sort[j];
+					sort[j] = sort[j + 1];
+					sort[j + 1] = temp;
 					swapped = true;
 				}
 			}
 			if(swapped == false)
-				return a;
+				return sort;
 		}
-		return a;
+		return sort;
 	}
 	
+	/**
+	 * Purpose: This method is used to take input from user
+	 * 
+	 * @return  integer array
+	 */
 	public static int[] inputArray() {
 		System.out.println("Enter the size of the array");
 		int size = Utility.getInt();
@@ -545,135 +616,202 @@ public static void prime1(int n) {
 		return a;
 	}
 	
-	public static void printArray(int b[]) {
-		for(int i=0; i<b.length; i++) {
-			System.out.print(b[i]+" ");
+	/**
+	 * Purpose: This method is used to print elements of array
+	 * 
+	 * @param print
+	 */
+	public static void printArray(int print[]) {
+		for(int i=0; i<print.length; i++) {
+			System.out.print(print[i]+" ");
 		}
+		System.out.println();
 	}
 	
-	public static void couponNumber() {
-		int c = 0, t;
-		System.out.println("Enter number of coupon number");
-		int n = getInt();
-		int a[] = new int[n];
-		System.out.println("Enter distinct integer value");
-		for(int i=0; i<a.length; i++) {
-			a[i] = getInt();
-		}
-		int maxValue = maxValue(a);
+	/**
+	 * Purpose: This method is used to generate random number and to process distinct coupons.
+	 * 
+	 * @param   numberOfCouponNumber
+	 * @param   number
+	 * @return  integer value
+	 */
+	
+	public static int couponNumber(int numberOfCouponNumber, int[] number) {
+		int count = 0, t;
 		Random r = new Random();
-		while(n != 0) {
+		int maxValue = maxValue(number);
+		int size = number.length;
+		while(size != 0) {
 			int p = r.nextInt(maxValue + 1);
-			c++;
-			for(int i=0; i<n; i++) {
-				if(a[i] == p) {
-					t = a[i];
-					a[i] = a[n - 1];
-					a[n - 1] = t;
+			count++;
+			for(int i=0; i<size; i++) {
+				if(number[i] == p) {
+					t = number[i];
+					number[i] = number[size - 1];
+					number[size - 1] = t;
 					i--;
-					n--;
+					size--;
 				}
 			}
 		}
-		System.out.println("Number of random number:"+c);
+		return count;
 	}
 	
-	public static int maxValue(int[] a) {
-		int temp = a[0];
-		for(int i = 1; i < a.length; i++) {
-			if(temp < a[i])
-				temp = a[i];
+	/**
+	 * This method to check the elements of the array is distinct or not 
+	 * @param number
+	 * @return true or false
+	 */
+	
+	public static boolean isDistinct(int[] number) {
+		for(int i = 0; i < number.length; i++) {
+			for(int j = i + 1; j < number.length; j++) {
+				if(number[i] == number[j])
+					return false;
+			}
 		}
+		return true;
+	}
+	
+	/**
+	 * This method is used for to find the maximum value of the array.
+	 * 
+	 * @param number
+	 * @return integer temp stores the maximum value and return
+	 */
+	
+	public static int maxValue(int[] number) {
+		
+		//We store first element of array in temp variable.
+		int temp = number[0];
+		
+		//By using loop we store maximum value of array in temp.
+		for(int i = 1; i < number.length; i++) {
+			if(temp < number[i])
+				temp = number[i];
+		}
+		
+		//return maximum value
 		return temp;
 	}
 	
-	public static String[] bubbleSortOfString(String str[]) {
+	/**
+	 * Purpose: Method to use sort the integer from the integer array.
+	 * 
+	 * @param   sort sort is an array where to store the all integer value.
+	 * @return  String array string in sorted form  
+	 */
+	
+	public static String[] bubbleSortOfString(String sort[]) {
 		String temp = null;
 		boolean swapped;
-		for(int i=0; i<str.length; i++) {
+		for(int i=0; i<sort.length; i++) {
 			swapped = false;
-			for(int j = 0; j < str.length - i - 1; j++) {
-				if(str[j].compareTo(str[j+1]) > 0) {
-					temp = str[j];
-					str[j] = str[j+1];
-					str[j+1] = temp;
+			for(int j = 0; j < sort.length - i - 1; j++) {
+				if(sort[j].compareTo(sort[j+1]) > 0) {
+					temp = sort[j];
+					sort[j] = sort[j+1];
+					sort[j+1] = temp;
 					swapped = true;
 				}
 			}
 			if(swapped == false)
-				return str;
+				return sort;
 		}
-		return str;
+		return sort;
 	}
+	
+	/**
+	 * Purpose: Method to use search the integer from the integer array.
+	 * 
+	 * @param   search search is a array where to store the all integer value.
+	 * @param   searchedInteger integer which is search in array.
+	 * @return  integer index of searched element if present otherwise -1.
+	 */
 
-	public static int binarySearchForInt(int[] arr, int searchedElement) {
-		int first = 0, last = arr.length - 1;
+	public static int binarySearchForInt(int[] search, int searchedInteger) {
+		int first = 0, last = search.length - 1;
 		while(first <= last) {
 			int mid = (first + last) / 2;
-			if(searchedElement == arr[mid])
+			if(searchedInteger == search[mid])
 				return mid;
-			else if(searchedElement > arr[mid])
+			else if(searchedInteger > search[mid])
 				first = mid + 1;
 			else
 				last = mid - 1;
 		}
 		return -1;
 	}
+	
+	/**
+	 * Purpose: Method to use search the string from the string array.
+	 * 
+	 * @param   search
+	 * @param   searchedString
+	 * @return  integer index of searched element if present otherwise -1.
+	 */
 
-	public static int binarySearchForString(String[] strarr, String searchedStr) {
-		int first = 0, last = strarr.length - 1;
+	public static int binarySearchForString(String[] search, String searchedString) {
+		int first = 0, last = search.length - 1;
 		while(first <= last) {
 			int mid = (first + last) / 2;
-			if(strarr[mid].equals(searchedStr))
+			if(search[mid].equals(searchedString))
 				return mid;
-			else if(searchedStr.compareTo(strarr[mid])>0)
+			else if(searchedString.compareTo(search[mid])>0)
 				first = mid + 1;
 			else
 				last = mid - 1;
 		}
 		return -1;
 	}
+	
+	/**
+	 * Purpose: This method is used for the sort of the elements of the integer array by using insertion sort.
+	 * 
+	 * @param   sort array 
+	 * @return  String array
+	 */
 
-	public static int[] insertionSortForInt(int arr[]) {
-		int key = arr[0];
+	public static int[] insertionSortForInt(int sort[]) {
+		int key = sort[0];
 		int j;
-		for(int i=1; i<arr.length; i++) {
-			key = arr[i];
+		for(int i=1; i<sort.length; i++) {
+			key = sort[i];
 			j = i - 1;
-			while(j>=0 && arr[j]>key) {
-				arr[j+1] = arr[j];
+			while(j>=0 && sort[j]>key) {
+				sort[j+1] = sort[j];
 				j--;
 			}
-			arr[j+1] = key;
+			sort[j+1] = key;
 		}
-		return arr;
+		return sort;
 	}
+	
+	/**
+	 * Purpose: This method is used for the sort of the elements of the string array by using insertion sort.
+	 * 
+	 * @param   string array
+	 * @return  String array
+	 */
 
-	public static String[] insertionSortForString(String str[]) {
+	public static String[] insertionSortForString(String string[]) {
 		String key;
 		int j;
-		for(int i = 1; i < str.length; i++) {
-			key = str[i];
+		for(int i = 1; i <   string.length; i++) {
+			key =   string[i];
 			j = i - 1;
-			while(j >= 0 && str[j].compareTo(key) > 0) {
-				str[j+1] = str[j];
+			while(j >= 0 &&   string[j].compareTo(key) > 0) {
+				  string[j+1] =   string[j];
 				j--;
 			}
-			str[j+1] = key;
+			  string[j+1] = key;
 		}
-		return str;
+		return   string;
 	}
-
+	
 	/**
-	 * Starts the stopwatch.
-	 * @param start start is the system time, in milliseconds.
-	 * @param active by using active, we know stopwatch is start or stop. 
+	 * Purpose: This method is used to measure the elapsed time between start and end
 	 */
-	public static void startTime(long start, boolean active) {
-		start = System.currentTimeMillis();
-		active = true;
-		System.out.println("Starting time:"+start);
-	}
 	
 	public static void stopwatch()
 	{
@@ -684,87 +822,131 @@ public static void prime1(int n) {
 			System.out.println("2.Stop");
 			System.out.println("Enter your choice");
 			int choice = getInt();
-			if(choice == 1 && flag == false) {
-				start = Instant.now().getEpochSecond();
-				flag = true;
+			if(choice == 1) {
+				if(flag == false) {
+					start = System.currentTimeMillis();
+					flag = true;
+				}
+				else
+					System.out.println("\nAlredy Started\n");
 			}
-			else if(choice == 2 && flag == true) {
-				stop = Instant.now().getEpochSecond();
-				System.out.println("Time:"+(stop - start));
-				flag = false;
-				break;
-			}
-			else {
-				System.out.println("Please enter right choice");
-				break;
+			if(choice == 2) {
+				if(flag == true) {
+					stop = System.currentTimeMillis();
+					System.out.println("\nElapsed Time:"+(stop - start)+" milliseconds");
+					flag = false;
+					break;
+				}
+				else 
+					System.out.println("\nFirst Start\n");
 			}
 		}
 	}
 	
 	/**
-	 * Stops the stopwatch.
-	 * @param start start is the system time, in milliseconds.
-	 * @param duration in duration parameter we store difference between stop time and start time
-	 * @param active active is ture then calculate the duration
+	 * Purpose: This method is used to print two dimensional array.
+	 * 
+	 * @param print
 	 */
-	public static long stopTime(long start, long duration, boolean active) {
-		long stop = System.currentTimeMillis();
-		if(active) duration = (stop - start);
-		else System.out.println("First Start time");
-		active = false;
-		System.out.println("Stoping time:"+stop);
-		return duration;
-	}
 	
-	/*public static void stopwatch() {
-		//duration is the time, in milliseconds, that has passed on the stopwatch between startTime() and stopTime() calls.
-		long duration = 0;
-						
-		//start is the system time in milliseconds, when startTime() was called.
-		long start = 0;
-						
-		//When active is true, the stopwatch is still going, and the duration does not update until it's stopped.
-		boolean active = false;
-		startTime(start, active);
-		duration = stopTime(start, duration, active);
-		System.out.println("Difference:"+duration);
-	}*/
-	
-	/*public static void stopwatch() {
-		//duration is the time, in milliseconds, that has passed on the stopwatch between startTime() and stopTime() calls.
-		long duration = 0;
-				
-		//start is the system time in milliseconds, when startTime() was called.
-		long start = 0;
-				
-		//When active is true, the stopwatch is still going, and the duration does not update until it's stopped.
-		boolean active = false;
-		System.out.println("1.Start time");
-		System.out.println("2.Stop time");
-		System.out.println("Enter your choice:");
-		int choice = getInt();
-		switch(choice) {
-			case '1':
-				//Start the stopwatch.
-				//startTime(start, active);
-				System.out.println("start");
-				break;
-			case '2':
-				//Stop the stopwatch.
-				duration = stopTime(start, duration, active);
-				System.out.println(duration);
-				break;
-			default:
-				System.out.println("Please enter right choice");
-		}
-	}*/
-	public static void twoDimArray(char arr[][]) {
-		for(int i=0; i<arr.length; i++) {
-			for(int j=0; j<arr.length; j++) {
-				System.out.print("| "+arr[i][j]+" |");
+	public static void twoDimArray(char print[][]) {
+		for(int i=0; i<print.length; i++) {
+			for(int j=0; j<print.length; j++) {
+				System.out.print("| "+print[i][j]+" |");
 			}
 			System.out.println();
 		}
+	}
+
+	/**
+	 * Purpose:  To calculate WindChill
+	 * 
+	 * @param t  type double and t is temperature(in Fahrenheit)
+	 * @param v  type double and v is the wind speed(in miles per hour)
+	 * @return double
+	 */
+	public static double calculateWindChill(double t, double v) {
+		double w = 35.74 + 0.6215 + (0.4275 * t - 35.75) *(Math.pow(v,0.18));
+		return w;
+	}
+	
+	/**
+	 * Purpose: This method help to play a Cross Game or Tic­Tac­Toe Game.
+	 */
+
+	public static void tictactoe() {
+		Random r = new Random();
+		int count = 0;
+		boolean flag = false;
+		char board[][] = new char[3][3];
+		for(int i=0; i<board.length; i++) {
+			for(int j=0; j<board[0].length; j++) {
+				board[i][j] = '_';
+				System.out.print("| "+board[i][j]+" ");
+				if(j == 2)
+					System.out.println("|");
+			}
+			System.out.println();
+		}
+		while(count != 9) {
+			if(flag == false) {
+				System.out.println();
+				System.out.println("User Chance");
+				System.out.print("Enter row number:");
+				int row = Utility.getInt();
+				System.out.print("Enter column number:");
+				int col = Utility.getInt();
+				if(row == 0 && col == 0 || row == 0 && col == 1 || row == 0 && col == 2 || row == 1 && col == 0 || row == 1 && col == 1 || row == 1 && col == 2 || row == 2 && col == 0 || row == 2 && col == 1 || row == 2 && col == 2) {
+					if(board[row][col] == '_') {
+						board[row][col] = 'O';
+						count++;
+						flag = true;
+						Utility.twoDimArray(board);
+					}
+					else
+						System.out.println("wrong input");
+				}
+				else
+					System.out.println("Please enter right rows and columns");
+			}
+			if(board[0][0] == 'O' && board[0][1] == 'O' && board[0][2] == 'O' ||
+			   board[1][0] == 'O' && board[1][1] == 'O' && board[1][2] == 'O' ||
+			   board[2][0] == 'O' && board[2][1] == 'O' && board[2][2] == 'O' ||
+			   board[0][0] == 'O' && board[1][1] == 'O' && board[2][2] == 'O' ||
+			   board[0][2] == 'O' && board[1][1] == 'O' && board[2][0] == 'O' ||
+			   board[0][0] == 'O' && board[1][0] == 'O' && board[2][0] == 'O' ||
+			   board[0][1] == 'O' && board[1][1] == 'O' && board[2][1] == 'O' ||
+			   board[0][2] == 'O' && board[1][2] == 'O' && board[2][2] == 'O') {
+					System.out.println("User Wins");
+					break;
+			}
+			if(flag && count < 9) {
+				System.out.println();
+				System.out.println("Computer Chance");
+				int row = r.nextInt(3);
+				int col = r.nextInt(3);
+				if(board[row][col] == '_') {
+					board[row][col] = 'X';
+					count++;
+					flag = false;
+					Utility.twoDimArray(board);
+				}
+			}
+			if(board[0][0] == 'X' && board[0][1] == 'X' && board[0][2] == 'X' ||
+			   board[1][0] == 'X' && board[1][1] == 'X' && board[1][2] == 'X' ||
+			   board[2][0] == 'X' && board[2][1] == 'X' && board[2][2] == 'X' ||
+			   board[0][0] == 'X' && board[1][1] == 'X' && board[2][2] == 'X' ||
+			   board[0][2] == 'X' && board[1][1] == 'X' && board[2][0] == 'X' ||
+			   board[0][0] == 'X' && board[1][0] == 'X' && board[2][0] == 'X' ||
+			   board[0][1] == 'X' && board[1][1] == 'X' && board[2][1] == 'X' ||
+			   board[0][2] == 'X' && board[1][2] == 'X' && board[2][2] == 'X') {
+				System.out.println("Computer Wins");
+				break;
+			}
+			
+		}
+		if(count == 9)
+			System.out.println("Game Draw");
 	}
 }
 

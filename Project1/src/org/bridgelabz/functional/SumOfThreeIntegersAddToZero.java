@@ -3,35 +3,40 @@ package org.bridgelabz.functional;
 import java.util.ArrayList;
 import org.bridgelabz.utility.Utility;
 
+/**
+ * purpose: Number of distinct triplets as well as print distinct triplets
+ * 
+ * @author  Mohit Kumar
+ * @version 1.0
+ * @since   20-12-2018
+ */
+
 public class SumOfThreeIntegersAddToZero {
 	public static void main(String[] args) {
 		System.out.println("Enter number of integers:");
-		int n = Utility.getInt();
-		int a[] = new int[n];
+		int number = Utility.getInt();
+		int arrayInteger[] = new int[number];
 		System.out.println("Enter integers");
-		for(int i=0; i<a.length; i++) {
-			a[i] = Utility.getInt();
-		}
-		
-		int c = 0;
+		for(int i=0; i<arrayInteger.length; i++)
+			arrayInteger[i] = Utility.getInt();
+		int count = 0;
 		ArrayList<String> arr = new ArrayList<String>();
 		System.out.println("Distinct Triplets are");
-		for(int i=0; i<a.length; i++) {
-			for(int j=i+1; j<a.length; j++) {
-				for(int k=j+1; k<a.length; k++) {
-					int sum = a[i] + a[j] + a[k];
+		for(int i=0; i<arrayInteger.length; i++) {
+			for(int j=i+1; j<arrayInteger.length; j++) {
+				for(int k=j+1; k<arrayInteger.length; k++) {
+					int sum = arrayInteger[i] + arrayInteger[j] + arrayInteger[k];
 					if(sum == 0) {
-						String st = null;
-						System.out.println(a[i]+" "+a[j]+" "+a[k]);
-						c++;
-						st = st+a[i]+a[j]+a[k];
+						String st = " ";
+						System.out.println(arrayInteger[i] + " " + arrayInteger[j] + " " + arrayInteger[k]);
+						count++;
+						st = st + arrayInteger[i] + arrayInteger[j] + arrayInteger[k];
 						arr.add(st);
-						//arr.get(st);
 					}
 				}
 			}
 		}
 		System.out.println("Number of distinct triplets");
-		System.out.println(c);
+		System.out.println(count);
 	}
 }
