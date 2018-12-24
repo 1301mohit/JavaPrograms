@@ -13,7 +13,7 @@ public class Prime {
 		if(number < 1)
 			System.out.println("Please enter positive number");
 	}while(number < 1);
-	ArrayList<Integer> prime = Utility.prime1(number);
+	ArrayList<Integer> prime = Utility.prime(number);
 	System.out.println("/nList of prime number");
 	System.out.println(prime);
 	}

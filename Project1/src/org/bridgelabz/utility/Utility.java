@@ -496,33 +496,6 @@ public class Utility {
 		return count;
 	}
 	
-	/*
-	 * Purpose: This method is used to print the prime number series
-	 * @param   number its defines the range of the prime number
-	 */
-	/*public static void prime(int   number) {
-		
-		//This for loop is starts from 2 and iterate n times
-		for(int i=2; i<=  number; i++) {
-			int c = 0;
-			
-			//This for loop is starts from 2 and iterate half of the value of the first loop
-			for(int j=2; j<=i/2; j++) {*/
-				
-				/*If the reminder of the first loop value and the second loop value is 0
-				  then the value of the c is equal to 1 and break the inner loop*/
-				/*if(i % j == 0) {
-					c = 1;
-					break;
-				}
-			}
-			
-			//if c is equal to 0 its mean the value of i is prime number and print the value of i
-			if(c == 0)
-				System.out.print(i+" ");
-		}
-	}*/
-	
 	/**
 	 * Purpose: This method is used to print the prime numbers between 1 and parameter number.
 	 * 
@@ -530,7 +503,7 @@ public class Utility {
 	 * @return  ArrayList<Integer> Series of prime number
 	 */
 	
-	public static ArrayList<Integer> prime1(int number) {
+	public static ArrayList<Integer> prime(int number) {
 		ArrayList<Integer> prime = new ArrayList<Integer>();
 		
 		//This for loop is starts from 2 and iterate n times
@@ -948,6 +921,143 @@ public class Utility {
 		if(count == 9)
 			System.out.println("Game Draw");
 	}
+
+	public static void permute(String str, int l, int r) {
+	       if (l == r) 
+	            System.out.println(str); 
+	       else
+	       { 
+	            for (int i = l; i <= r; i++) 
+	            { 
+	                str = swap(str,l,i); 
+	                permute(str, l+1, r); 
+	                str = swap(str,l,i); 
+	            } 
+	       } 
+	    }
+
+	private static String swap(String str, int i, int j) {
+
+        char temp; 
+        char[] charArray = str.toCharArray(); 
+        temp = charArray[i] ; 
+        charArray[i] = charArray[j]; 
+        charArray[j] = temp; 
+        return String.valueOf(charArray);
+	}
+
+	public static int fewest(int amount, int sum) {
+		int remainder;
+		if(amount == 0)
+			return sum;
+		else if(amount >= 1000) {
+			remainder = amount / 1000;
+			sum = sum + remainder;
+			amount = amount % 1000;
+			System.out.println("\nNumber of Rs1000 note:"+remainder);
+		}
+		else if(amount >= 500) {
+			remainder = amount / 500;
+			sum = sum + remainder;
+			amount = amount % 500;
+			System.out.println("\nNumber of Rs500 note:"+remainder);
+		}
+		else if(amount >= 100) {
+			remainder = amount / 100;
+			sum = sum + remainder;
+			amount = amount % 100;
+			System.out.println("\nNumber of Rs100 note:"+remainder);
+		}
+		else if(amount >= 50) {
+			remainder = amount / 50;
+			sum = sum + remainder;
+			amount = amount % 50;
+			System.out.println("\nNumber of Rs50 note:"+remainder);
+		}
+		else if(amount >= 10) {
+			remainder = amount / 10;
+			sum = sum + remainder;
+			amount = amount % 10;
+			System.out.println("\nNumber of Rs10 note:"+remainder);
+		}
+		else if(amount >= 5) {
+			remainder = amount / 5;
+			sum = sum + remainder;
+			amount = amount % 5;
+			System.out.println("\nNumber of Rs5 note:"+remainder);
+		}
+		else if(amount >= 2) {
+			remainder = amount / 2;
+			sum = sum + remainder;
+			amount = amount % 2;
+			System.out.println("\nNumber of Rs2 note:"+remainder);
+		}
+		else if(amount >= 1) {
+			remainder = amount / 1;
+			sum = sum + remainder;
+			amount = amount % 1;
+			System.out.println("\nNumber of Rs1 note:"+remainder);
+		}
+		return fewest(amount, sum);
+	}
+	
+	/**
+	 * Purpose: To find the day of the week that date.
+	 * 
+	 * @param m integer m is month
+	 * @param d integer d is day
+	 * @param y integer y is year
+	 * @return String day of the week.
+	 */
+	public static String dayOfWeek(int m, int d, int y) {
+		String day[] = {"Sunday","Monday","Tuesday","Wednesday","Thrusday","Friday","Saturday"};
+		int y0 = y - (14 - m) / 12;
+		int x = y0 + y0 / 4 - y0 / 100 + y0 / 400;
+		int m0 = m + 12 * ((14 - m) / 12) - 2;
+		int d0 = (d + x + 31 * m0 / 12 ) % 7; 
+		return day[d0];
+	}
+	
+	/**
+	 * Purpose: Convert temperature value Fahrenheit to Celsius.
+	 * 
+	 * @param   Fahrenheit 
+	 * @return  double Celsius
+	 */
+	
+	public static double temperatureConvertionFToC(double Fahrenheit) {
+		double celsius = (Fahrenheit - 32) * 5 / 9;
+		return celsius;
+	}
+	
+	/**
+	 * Purpose: Convert temperature value Celsius to Fahrenheit.
+	 * 
+	 * @param   Celsius
+	 * @return  double Fahrenheit
+	 */
+	
+	public static double temperatureConvertionCToF(double Celsius) {
+		double Fahrenheit = (Celsius * 9 / 5) + 32;
+		return Fahrenheit;
+	}
+
+	/**
+	 * Purpose:  To calculate monthly Payment.
+	 * @param    P principal loan amount
+	 * @param    Y years to pay off
+	 * @param    R percent interest
+	 * @return   double Monthly Payement
+	 */
+	
+	public static double monthlyPayment(double P, double Y, double R) {
+		double n = 12 * Y;
+		double r = R / (12 * 100);
+		double payment = (P * r) / (1 - ( 1 / (Utility.power((1 + r), n))));
+		return payment;
+	}
+	
+	
 }
 
 
