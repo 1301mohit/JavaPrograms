@@ -103,7 +103,7 @@ public class Utility {
 	
 	public static int power(int base, int exponent) {
 		int product = 1;
-		while(exponent != 0) {
+		while(exponent > 0) {
 			product = product * base;
 			exponent--;
 		}
@@ -120,7 +120,7 @@ public class Utility {
 	
 	public static double power(double base, double exponent) {
 		double product = 1;
-		while(exponent != 0) {
+		while(exponent > 0) {
 			product = product * base;
 			exponent--;
 		}
@@ -1044,6 +1044,7 @@ public class Utility {
 
 	/**
 	 * Purpose:  To calculate monthly Payment.
+	 * 
 	 * @param    P principal loan amount
 	 * @param    Y years to pay off
 	 * @param    R percent interest
@@ -1055,6 +1056,79 @@ public class Utility {
 		double r = R / (12 * 100);
 		double payment = (P * r) / (1 - ( 1 / (Utility.power((1 + r), n))));
 		return payment;
+	}
+	
+	/**
+	 * Purpose: This method is used to calculate square root of the number. 
+	 * 
+	 * @param   number
+	 * @return  double
+	 */
+
+	public static double squareRoot(double number) {
+		double t = number;
+		final double EPSILON = 1e-15;
+		while(Math.abs(t - number / t) > EPSILON * t)
+			t = (number / t + t) / 2;
+		return t;
+	}
+	
+	/**
+	 * Purpose: This method is used to convert Decimal to Binary number.
+	 * 
+	 * @param   number Decimal Number 
+	 * @return  String Binary Number
+	 */
+
+	public static String toBinary(int number) {
+		String str = "";
+		while(number != 0) {
+			int rem = number % 2;
+			str = rem + str;
+			number = number / 2;
+		}
+		int rem1 = str.length() % 4;
+		for(int i = 0; i < 4 - rem1; i++)
+			str = 0 + str;
+		return str;
+	}
+	
+	/**
+	 * Purpose: This method is used to Swap nibbles and find the new number.
+	 * 
+	 * @param   str String in binary number
+	 * @return  integer decimal value
+	 */
+
+	public static int swapNibble(String str) {
+		char temp;
+		char binary[] = str.toCharArray();
+		int length = binary.length / 2;
+		for(int i=0; i<length; i++) {
+			temp = binary[i];
+			binary[i] = binary[length + i];
+			binary[length + i] = temp;
+		}
+		System.out.println();
+		int decimal = toDecimal(binary);
+		return decimal;
+	}
+	
+	/**
+	 * Purpose: This method is used to convert binary to Decimal.
+	 * 
+	 * @param   binary Binary Number
+	 * @return  integer Decimal number
+	 */
+	
+	public static int toDecimal(char[] binary) {
+		int sum = 0;
+		int size = binary.length;
+		for(int i=0; i<size; i++) {
+			sum = sum + (binary[size - 1 - i] -48) * power(2, i);
+		}
+		return sum;
+	
 	}
 	
 	

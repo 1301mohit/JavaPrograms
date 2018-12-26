@@ -4,7 +4,9 @@ import org.bridgelabz.utility.Utility;
 
 /**
  * To generate distinct coupon number and count total random number needs to have all distinct number
- * @author Mohit Kumar
+ * @author   Mohit Kumar
+ * @version  1.0
+ * @since    20.12.2018
  */
 
 public class CouponNumber {
