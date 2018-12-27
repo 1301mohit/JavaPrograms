@@ -931,7 +931,7 @@ public class Utility {
 	            { 
 	                str = swap(str,l,i); 
 	                permute(str, l+1, r); 
-	                str = swap(str,l,i); 
+	               // str = swap(str,l,i); 
 	            } 
 	       } 
 	    }
@@ -1128,8 +1128,111 @@ public class Utility {
 			sum = sum + (binary[size - 1 - i] -48) * power(2, i);
 		}
 		return sum;
-	
 	}
+	
+	/**
+	 * Purpose: This method is used for find the guess number.
+	 * 
+	 * @param f starting number of the range
+	 * @param l last number of the range
+	 * @return integer guess number
+	 */
+
+	public static int toFindYourNumber(int f, int l) {
+		int mid = (f + l)/2;
+		System.out.println("If guess number is "+mid+" than enter true otherwise false");
+		if(Utility.getBoolean())
+			return mid;
+		else {
+			System.out.println("If guess number is greater than "+mid+" than press 0 and if guess number is less than "+mid+" than press 1");
+			System.out.println("Enter your choice");
+			int c = Utility.getInt();
+			if(c == 0)
+				return toFindYourNumber(mid+1,l);
+			else if(c == 1)
+				return toFindYourNumber(f,mid-1);
+			else
+				return -1;
+		}
+	}
+	
+	/**
+	 * Purpose: This method is used for sort an array.
+	 * 
+	 * @param 	arr user input array
+	 * @param   left it is left index of the array
+	 * @param   right it is right index of the array
+	 */
+	public static void mergeSort(int[] arr, int left, int right) {
+		if(left < right) {
+			int mid = left + (right - left) / 2;
+			
+			//Sort first and second halves
+			mergeSort(arr, left, mid);
+			mergeSort(arr, mid+1, right);
+			
+			//merge first halves and second halves
+			merge(arr, left, mid, right);
+		}
+	}
+	
+	/**
+	 * Purpose: Merge two subarrays of arr[].
+	 * 
+	 * @param arr array
+	 * @param left left index
+	 * @param mid mid index
+	 * @param right right index
+	 */
+
+	private static void merge(int[] arr, int left, int mid, int right) {
+		int i, j, k;
+		int n1 = mid - left + 1;
+		int n2 = right - mid;
+		
+		//Create temporary arrays
+		int Left[] = new int[n1];
+		int Right[] = new int[n2];
+		
+		//Copy data to temporary arrays Left[] and Right[]
+		for(i=0; i<n1; i++)
+			Left[i] = arr[left + i];
+		for(j=0; j<n2; j++)
+			Right[j] = arr[mid + 1 + j];
+		
+		//Merge the temporary arrays into arr[]
+		i = 0;
+		j = 0;
+		k = left;
+		while(i<n1 && j<n2) {
+			if(Left[i] <= Right[j]) {
+				arr[k] = Left[i];
+				i++;
+				k++;
+			}
+			else {
+				arr[k] = Right[j];
+				j++;
+				k++;
+			}
+		}
+		
+		//Copy the remaining elements of Left[], if there are any
+		while(i < n1) {
+			arr[k] = Left[i];
+			i++;
+			k++;
+		}
+		
+		//Copy the remaining elements of Right[], if there are any
+		while(j < n2) {
+			arr[k] = Right[j];
+			j++;
+			k++;
+		}
+	}
+	
+	
 	
 	
 }

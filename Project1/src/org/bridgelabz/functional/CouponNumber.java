@@ -15,7 +15,8 @@ public class CouponNumber {
 		do {
 			System.out.println("Enter number of coupon number");
 			numberOfCouponNumber = Utility.getInt();
-			System.out.println("Please enter positive number");
+			if(numberOfCouponNumber <= 0)
+				System.out.println("Please enter positive number");
 			System.out.println("-----------------------------");
 		}while(numberOfCouponNumber <= 0);
 		int number[] = new int[numberOfCouponNumber];
@@ -23,7 +24,8 @@ public class CouponNumber {
 			System.out.println("Enter distinct integer value");
 			for(int i=0; i<number.length; i++)
 				number[i] = Utility.getInt();
-			System.out.println("Please enter distinct integer value");
+			if(Utility.isDistinct(number) == false)
+				System.out.println("Please enter distinct integer value");
 			System.out.println("------------------------------------");
 		}while(Utility.isDistinct(number) == false);
 		int count = Utility.couponNumber(numberOfCouponNumber, number);
