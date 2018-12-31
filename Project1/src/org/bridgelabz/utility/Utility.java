@@ -1,9 +1,16 @@
 package org.bridgelabz.utility;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+
+import org.bridgelabz.datastructure.SingleLinkedList;
 
 /******************************************************************************************
  *  purpose: Declare Utility Class implements methods which are called by any other class. 
@@ -1232,9 +1239,41 @@ public class Utility {
 		}
 	}
 	
-	
-	
-	
+	public static String[] readFromFile(String path) throws IOException {
+		File f = new File(path);
+		FileReader fr = new FileReader(f);  //Path:"/home/admin1/Documents/bcd.txt"
+		BufferedReader br = new BufferedReader(fr);
+	//	BufferedReader br1 = new BufferedReader(fr);
+		int count = 0;
+		String line1 = br.readLine();
+		while(line1 != null) {
+			count++;
+			line1 = br.readLine();
+		}
+		System.out.println(count+"----");
+		String str[] = new String[count];
+		int i=0;
+		String line = br.readLine();
+		System.out.println(line);
+		while(line != null) {
+			//str = line.split(" ");
+			str[i] = line;
+			line = br.readLine();
+			System.out.println(i);
+			i++;
+		}
+		
+		br.close();
+		return str;
+	}
+
+	public static void writeInfile(SingleLinkedList<String> s, String path) throws FileNotFoundException {
+		Object obj[] = s.toArray();
+		PrintWriter pw = new PrintWriter(path);  //Path:"/home/admin1/Documents/mbcd.txt"
+		for(int i=0;i<obj.length;i++)
+			pw.println(obj[i]+" ");
+		pw.close();
+	}
 }
 
 
