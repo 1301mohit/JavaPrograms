@@ -14,14 +14,16 @@ public class unOrderedList {
 		for(int i=0; i<str.length; i++) {
 			System.out.print(str[i]+" ");
 		}
-		System.out.println("\n\nLinkedList elements");
+		System.out.println("\nLinkedList elements");
 		for(int i=0; i<str.length; i++) {
-			s.add(str[i]);
+			if(str[i] != null)
+				s.add(str[i]);
 		}
 		s.display();
 		System.out.println("\nEnter searched element");
 		String searchData = Utility.next();
 		int a = s.search(searchData);
+		//System.out.println("a:"+a);
 		if(a == 0) {
 			System.out.println("\nData is not found");
 			s.add(searchData);

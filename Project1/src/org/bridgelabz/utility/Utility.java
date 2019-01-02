@@ -11,6 +11,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 import org.bridgelabz.datastructure.SingleLinkedList;
+import org.bridgelabz.datastructure.Stack;
 
 /******************************************************************************************
  *  purpose: Declare Utility Class implements methods which are called by any other class. 
@@ -1243,23 +1244,27 @@ public class Utility {
 		File f = new File(path);
 		FileReader fr = new FileReader(f);  //Path:"/home/admin1/Documents/bcd.txt"
 		BufferedReader br = new BufferedReader(fr);
+		String[] str = new String[(int)f.length()];
 	//	BufferedReader br1 = new BufferedReader(fr);
-		int count = 0;
+	/*	int count = 0;
 		String line1 = br.readLine();
+		System.out.println("line1:"+line1);
 		while(line1 != null) {
 			count++;
 			line1 = br.readLine();
+			System.out.println("line1:"+line1);
 		}
 		System.out.println(count+"----");
-		String str[] = new String[count];
+		String str[] = new String[count];*/
 		int i=0;
 		String line = br.readLine();
-		System.out.println(line);
+		//System.out.print("line:"+line);
 		while(line != null) {
 			//str = line.split(" ");
 			str[i] = line;
 			line = br.readLine();
-			System.out.println(i);
+		//	System.out.print("line:"+line);
+		//	System.out.print(i);
 			i++;
 		}
 		
@@ -1271,8 +1276,34 @@ public class Utility {
 		Object obj[] = s.toArray();
 		PrintWriter pw = new PrintWriter(path);  //Path:"/home/admin1/Documents/mbcd.txt"
 		for(int i=0;i<obj.length;i++)
-			pw.println(obj[i]+" ");
+			pw.println(obj[i]);
 		pw.close();
+	}
+
+	public static boolean isBalancedParentheses(String expression) {
+		int size = expression.length();
+		Stack<Character> s = new Stack<Character>(size);
+		char exp[] = expression.toCharArray();
+		for(int i=0; i<exp.length;i++) {
+			if(exp[i] == '(' || exp[i] == '{' || exp[i] == '[')
+				s.push(exp[i]);
+			else {
+				switch(exp[i]) {
+				case ')':
+					if(s.pop(exp[i]) != '(')
+						return false;
+					break;
+				case '}':
+					if(s.pop(exp[i]) != '{')
+						return false;
+					break;
+				case ']':
+					if(s.pop(exp[i]) != '[')
+						return false;
+				}
+			}
+		}
+		return s.isEmpty();
 	}
 }
 
