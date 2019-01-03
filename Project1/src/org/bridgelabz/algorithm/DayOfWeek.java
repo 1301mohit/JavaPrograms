@@ -16,7 +16,10 @@ public class DayOfWeek {
 		int month = Integer.parseInt(args[0]);
 		int day = Integer.parseInt(args[1]);
 		int year = Integer.parseInt(args[2]);
-		String weekday = Utility.dayOfWeek(month, day, year);
+		String days[] = {"Sunday","Monday","Tuesday","Wednesday","Thrusday","Friday","Saturday"};
+		int d = Utility.dayOfWeek(month, day, year);
+		System.out.println(d);
+		String weekday = days[d];
 		System.out.println("Date:"+day+"."+month+"."+year);
 		System.out.println("\nDay:"+weekday);
 	}

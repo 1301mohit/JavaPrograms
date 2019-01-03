@@ -20,7 +20,10 @@ public class IsLeapYear {
 				System.out.println("Please enter 4 digit number");
 			System.out.println("-----------------------------------------");
 		}while(year > 9999 || year < 1000);
-		String str = Utility.isLeapYear(year);
-		System.out.println(str);
+		boolean b = Utility.isLeapYear(year);
+		if(b)
+			System.out.println(year+" is leap year");
+		else
+			System.out.println(year+" is not leap year");
 	}
 }

@@ -8,7 +8,6 @@ public class SimulateBankingCashCounter {
 		System.out.println("Enter bank balance");
 		double balance = Utility.getDouble();
 		double amount = 0.0;
-		double oldBalance = balance;
 		int choice = 0;
 		System.out.println("Enter number of people come in to deposit Cash and withdraw Cash.");
 		int number = Utility.getInt();

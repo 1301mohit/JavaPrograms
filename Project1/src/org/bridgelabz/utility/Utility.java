@@ -190,12 +190,12 @@ public class Utility {
 	 * @param   year
 	 * @return  String
 	 */
-	public static String isLeapYear(int year) {
+	public static boolean isLeapYear(int year) {
 		    if(year % 400 == 0 || year % 4 == 0 && year % 100 != 0 ) {
-				return (year+" is leap year");
+		    	return true;
 			}
 			else {
-				return (year+" is not leat year");
+				return false;
 			}
 	}
 	
@@ -1017,13 +1017,14 @@ public class Utility {
 	 * @param y integer y is year
 	 * @return String day of the week.
 	 */
-	public static String dayOfWeek(int m, int d, int y) {
-		String day[] = {"Sunday","Monday","Tuesday","Wednesday","Thrusday","Friday","Saturday"};
+	public static int dayOfWeek(int m, int d, int y) {
+		
 		int y0 = y - (14 - m) / 12;
 		int x = y0 + y0 / 4 - y0 / 100 + y0 / 400;
 		int m0 = m + 12 * ((14 - m) / 12) - 2;
 		int d0 = (d + x + 31 * m0 / 12 ) % 7; 
-		return day[d0];
+		return d0;
+		//return day[d0];
 	}
 	
 	/**
