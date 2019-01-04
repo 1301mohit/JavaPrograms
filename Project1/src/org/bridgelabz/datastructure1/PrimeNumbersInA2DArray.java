@@ -6,18 +6,18 @@ public class PrimeNumbersInA2DArray {
 
 	public static void main(String[] args) {
 		int[][] prime = new int[10][100];
-		boolean flag = true;
+		System.out.println("prime numbers in a 2D Array");
+		System.out.println("---------------------------");
+		System.out.println();
 		for(int i=0;i<prime.length;i++) {
-			System.out.print(i*100+"-"+(i*100+100)+"  ");
 			for(int j=i*100;j<prime[0].length+(i*100);j++) {
-				
-				for(int k=2;k<j/2;k++) {
-					if(j % k == 0) {
-						flag = false;
+				if(j == i*100)
+					System.out.printf("%04d"+"-"+"%04d"+"  ",i*100,i*100+100);
+				else {
+					if(Utility.isPrime(j)) {
+						System.out.printf("%03d"+" ",j);
 					}
 				}
-				if(flag == true)
-					System.out.print(j+" ");
 			}
 			System.out.println();
 		}

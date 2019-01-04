@@ -273,6 +273,8 @@ public class Utility {
 			if(number % j == 0)
 				return false;
 		}
+		if(number == 1)
+			return false;
 		return true;
 	}
 	
@@ -1306,6 +1308,11 @@ public class Utility {
 		}
 		return s.isEmpty();
 	}
+	
+	/*public String prime(int initialRange, int finalRange) {
+		String str = "";
+		boolean 
+	}*/
 }
 
 
