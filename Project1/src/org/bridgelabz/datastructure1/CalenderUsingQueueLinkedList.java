@@ -3,11 +3,19 @@ package org.bridgelabz.datastructure1;
 import org.bridgelabz.datastructure.QueueUsingLinkedList;
 import org.bridgelabz.utility.Utility;
 
+/**
+ * Purpose: The program helps to display the calender by using Queue Linked List.
+ * 
+ * @author  Mohit Kumar
+ * @version 1.0
+ * @since   5.01.2019
+ */
+
 public class CalenderUsingQueueLinkedList {
 	public static void main(String[] args) {
 		int month = Integer.parseInt(args[0]);
 		int year = Integer.parseInt(args[1]);
-		int d = Utility.dayOfWeek(month, 1, year);
+		int dayOfWeek = Utility.dayOfWeek(month, 1, year);
 		QueueUsingLinkedList<String> qmonths = new QueueUsingLinkedList<String>();
 		QueueUsingLinkedList<Integer> qdays = new QueueUsingLinkedList<Integer>();
 		QueueUsingLinkedList<String> qweek = new QueueUsingLinkedList<String>();
@@ -29,15 +37,13 @@ public class CalenderUsingQueueLinkedList {
 		for(int i=1;i<week.length;i++) {
 			qweek.enqueue(week[i]);
 		}
-	/*	if((month == 2) && (Utility.isLeapYear(year)))
-			days[month] = 29;*/
 		System.out.println(qmonths.peek(month)+"  "+year);
 		System.out.println();
 		for(int i=1; i<week.length; i++) {
 			System.out.print(qweek.dequeue()+" ");
 		}
 		System.out.println();
-		for(int i=0; i<d; i++) {
+		for(int i=0; i<dayOfWeek; i++) {
 			System.out.print("    ");
 		}
 		for(int i=1;i<=qdays.peek(month);i++) {
@@ -45,26 +51,9 @@ public class CalenderUsingQueueLinkedList {
 				System.out.print(i+"   ");
 			else
 				System.out.print(i+"  ");
-			if((i+d) % 7 == 0 || i == qdays.peek(month))
+			if((i+dayOfWeek) % 7 == 0 || i == qdays.peek(month))
 				System.out.println();
 		}
-	//	System.out.println(months[month]+"  "+year);
-	//	System.out.println();
-	//	for(int i=1; i<week.length; i++) {
-	//		System.out.print(week[i]+" ");
-	//	}
-	//	System.out.println();
-		//System.out.println("Sun Mon Tue Wed Thr Fri Sat");
-//		for(int i=0; i<d; i++) {
-//			System.out.print("    ");
-//		}
-//		for(int i=1; i<=days[month];i++) {
-//			if(i<10)
-//				System.out.print(i+"   ");
-//			else
-//				System.out.print(i+"  ");
-//			if((i+d) % 7 == 0 || i == days[month])
-//				System.out.println();
-//		}
+	
 	}
 }

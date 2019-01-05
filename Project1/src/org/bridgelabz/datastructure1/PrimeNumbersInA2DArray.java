@@ -2,6 +2,13 @@ package org.bridgelabz.datastructure1;
 
 import org.bridgelabz.utility.Utility;
 
+/**
+ * Purpose: To represent the prime numbers in the range of 0 - 1000 in 2D array.
+ * 
+ * @author  Mohit Kumar
+ * @version 1.0
+ * @since   03.01.2019
+ */
 public class PrimeNumbersInA2DArray {
 
 	public static void main(String[] args) {

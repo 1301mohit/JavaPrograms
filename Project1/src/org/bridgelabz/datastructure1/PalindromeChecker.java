@@ -3,6 +3,13 @@ package org.bridgelabz.datastructure1;
 import org.bridgelabz.datastructure.Deque;
 import org.bridgelabz.utility.Utility;
 
+/**
+ * Purpose: To check String is palindrome or not by using Dequeue.
+ * 
+ * @author  Mohit Kumar
+ * @version 1.0
+ * @since   4.01.2019
+ */
 public class PalindromeChecker {
 	public static void main(String[] args) {
 		System.out.println("Enter String");

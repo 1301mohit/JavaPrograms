@@ -1,5 +1,13 @@
 package org.bridgelabz.datastructure;
 
+/**
+ * Purpose: Dequeue Program
+ * 
+ * @author  Mohit Kumar
+ * @version 1.0
+ * @since   04.01.2019
+ * @param <T> Generic type
+ */
 public class Deque<T> {
 	int capacity;
 	int rear = -1;
@@ -19,14 +27,11 @@ public class Deque<T> {
 			if(front == -1) {
 				front = 0;
 			}
-			
-		//	System.out.println("rear:"+rear);
-		//	System.out.println("front:"+front);
 			return true;
 		}
 	}
+	
 	public T removeFront() {
-		
 		T temp;
 		if(front == -1) {
 			System.out.println("Deque is empty");
@@ -38,24 +43,18 @@ public class Deque<T> {
 				front = 0;
 			}
 			else {
-			//	System.out.println("rear:"+rear);
-			//	System.out.println("front:"+front);
 				temp = (T) deque[front];
 				deque[front] = null;
 				front++;
-			//	System.out.println("rear:"+rear);
-			//	System.out.println("front:"+front);
 				if(front == rear + 1) {
 					front = -1;
 					rear = -1;
 				}
 			}
-			//System.out.println("rear:"+rear);
-			//System.out.println("front:"+front);
-			
 			return temp;
 		}
 	}
+	
 	public T removeRear() {
 		T temp;
 		if(rear == -1) {
@@ -73,6 +72,7 @@ public class Deque<T> {
 			return temp;
 		}
 	}
+	
 	public boolean addFront(T item) {
 		if(front == rear + 1) {
 			System.out.println("Queue is full");
@@ -83,8 +83,6 @@ public class Deque<T> {
 			deque[++front] = item;
 			rear = 0;
 			return true;
-			//System.out.println("Not possible");
-			//return false;
 		}
 		else {
 			if(front == 0) {
@@ -98,6 +96,7 @@ public class Deque<T> {
 		}
 		}
 	}
+	
 	public String toString() {
 		String string = "";
 		if(front != -1) {
@@ -117,20 +116,14 @@ public class Deque<T> {
 		}
 		return string;
 	}
+	
 	public boolean isEmpty() {
 		if(front == -1 && rear == -1)
 			return true;
 		else
 			return false;
 	}
-	/*public int size() {
-		int count = 0;
-		for(int i=front; i<capacity -1; i++)
-			count++;
-		for(int i=0; i<=rear; i++)
-			count++;
-		return count;
-	}*/
+	
 	public int size() {
 		int count = 0;
 		if(front != -1) {

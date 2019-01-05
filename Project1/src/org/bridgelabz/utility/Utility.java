@@ -941,7 +941,6 @@ public class Utility {
 	            { 
 	                str = swap(str,l,i); 
 	                permute(str, l+1, r); 
-	               // str = swap(str,l,i); 
 	            } 
 	       } 
 	    }
@@ -955,7 +954,14 @@ public class Utility {
         charArray[j] = temp; 
         return String.valueOf(charArray);
 	}
-
+    
+	/**
+	 * Purpose: This method is used to find out the lowest number of note for amount.
+	 * 
+	 * @param amount 
+	 * @param sum initial value of sum.
+	 * @return int lowest number of note
+	 */
 	public static int fewest(int amount, int sum) {
 		int remainder;
 		if(amount == 0)
@@ -1242,77 +1248,106 @@ public class Utility {
 			k++;
 		}
 	}
+	 /**
+	  * Purpose: This method helps to read from file.
+	  * 
+	  * @param   path where file present in the system.
+	  * @return  String array the data ot file convert into String array.
+	  * @throws  IOException
+	  */
 	
 	public static String[] readFromFile(String path) throws IOException {
 		File f = new File(path);
 		FileReader fr = new FileReader(f);  //Path:"/home/admin1/Documents/bcd.txt"
 		BufferedReader br = new BufferedReader(fr);
 		String[] str = new String[(int)f.length()];
-	//	BufferedReader br1 = new BufferedReader(fr);
-	/*	int count = 0;
-		String line1 = br.readLine();
-		System.out.println("line1:"+line1);
-		while(line1 != null) {
-			count++;
-			line1 = br.readLine();
-			System.out.println("line1:"+line1);
-		}
-		System.out.println(count+"----");
-		String str[] = new String[count];*/
 		int i=0;
 		String line = br.readLine();
-		//System.out.print("line:"+line);
 		while(line != null) {
-			//str = line.split(" ");
 			str[i] = line;
 			line = br.readLine();
-		//	System.out.print("line:"+line);
-		//	System.out.print(i);
 			i++;
 		}
-		
 		br.close();
 		return str;
 	}
+	
+	/**
+	 * Purpose: This method helps to write in file.
+	 * 
+	 * @param  ll Linkedlist
+	 * @param  path where the file present in the system.
+	 * @throws FileNotFoundException
+	 */
 
-	public static void writeInfile(SingleLinkedList<String> s, String path) throws FileNotFoundException {
-		Object obj[] = s.toArray();
+	public static void writeInfile(SingleLinkedList<String> ll, String path) throws FileNotFoundException {
+		Object obj[] = ll.toArray();
 		PrintWriter pw = new PrintWriter(path);  //Path:"/home/admin1/Documents/mbcd.txt"
 		for(int i=0;i<obj.length;i++)
 			pw.println(obj[i]);
 		pw.close();
 	}
-
+	
+	/**
+	 * Purpose: To check the parentheses of the expression is balanced or not.
+	 * 
+	 * @param   expression
+	 * @return  boolean 
+	 */
 	public static boolean isBalancedParentheses(String expression) {
 		int size = expression.length();
-		Stack<Character> s = new Stack<Character>(size);
-		char exp[] = expression.toCharArray();
-		for(int i=0; i<exp.length;i++) {
-			if(exp[i] == '(' || exp[i] == '{' || exp[i] == '[')
-				s.push(exp[i]);
+		Stack<Character> stack = new Stack<Character>(size);
+		char expressionArray[] = expression.toCharArray();
+		for(int i=0; i<expressionArray.length;i++) {
+			if(expressionArray[i] == '(' || expressionArray[i] == '{' || expressionArray[i] == '[')
+				stack.push(expressionArray[i]);
 			else {
-				switch(exp[i]) {
+				switch(expressionArray[i]) {
 				case ')':
-					if(s.pop(exp[i]) != '(')
+					if(stack.pop(expressionArray[i]) != '(')
 						return false;
 					break;
 				case '}':
-					if(s.pop(exp[i]) != '{')
+					if(stack.pop(expressionArray[i]) != '{')
 						return false;
 					break;
 				case ']':
-					if(s.pop(exp[i]) != '[')
+					if(stack.pop(expressionArray[i]) != '[')
 						return false;
 				}
 			}
 		}
-		return s.isEmpty();
+		return stack.isEmpty();
 	}
 	
-	/*public String prime(int initialRange, int finalRange) {
-		String str = "";
-		boolean 
-	}*/
+	/**
+	 * Purpose: To calculate the factorial of the number.
+	 * 
+	 * @param   number User input
+	 * @return  long factorial value of the number
+	 */
+	public static long factorial(int number) {
+		int product = 1;
+		while(number > 0) {
+			product = product * number;
+			number--;
+		}
+		return product;
+	}
+	
+	/**
+	 * Purpose: To calculate the number of binary search tree.
+	 * 
+	 * @param   node
+	 * @return  long array
+	 */
+	public static long[] numberOfBinarySeachTree(int[] node) {
+		long numberOfBinarySearchTree[] = new long[node.length];
+		for(int i=0; i<node.length; i++) {
+			numberOfBinarySearchTree[i] = Utility.factorial(2*node[i]) / (Utility.factorial(node[i]+1) * Utility.factorial(node[i]));
+		}
+		return numberOfBinarySearchTree;
+	}
 }
 
 

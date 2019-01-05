@@ -1,5 +1,13 @@
 package org.bridgelabz.datastructure;
 
+/**
+ * Purpose: Queue Program
+ * 
+ * @author  Mohit Kumar
+ * @version 1.0
+ * @since   02.01.2019
+ * @param <T> Generic type
+ */
 public class Queue<T> {
 	int capacity;
 	int front = -1;
@@ -9,6 +17,7 @@ public class Queue<T> {
 		this.capacity = capacity;
 		que = new Object[capacity];
 	}
+	
 	public boolean enqueue(T data) {
 		if(rear == capacity - 1) {
 			System.out.println("Queue is full");
@@ -21,6 +30,7 @@ public class Queue<T> {
 			return true;
 		}
 	}
+	
 	public T dequeue() {
 		T temp;
 		if(front == -1) {
@@ -36,6 +46,7 @@ public class Queue<T> {
 			return temp;
 		}
 	}
+	
 	public String toString() {
 		if(front == -1) {
 			System.out.println("Empty Queue");
@@ -51,11 +62,13 @@ public class Queue<T> {
 			return st;
 		}
 	}
+	
 	public boolean isEmpty(){
 		if(front == -1)
 			return true;
 		return false;
 	}
+	
 	public int size() {
 		int count = 0;
 		for(int i=front;i<=rear;i++) {

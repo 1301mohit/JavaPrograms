@@ -1,5 +1,13 @@
 package org.bridgelabz.datastructure;
 
+/**
+ * Purpose: Stack using LinkedList
+ * 
+ * @author  Mohit Kumar
+ * @version 1.0
+ * @since   04.01.2019
+ * @param <T> Generic type
+ */
 public class StackUsingLinkedList<T> {
 	class Node{
 		T data;
@@ -9,6 +17,7 @@ public class StackUsingLinkedList<T> {
 		}
 	}
 	Node head;
+	
 	public boolean push(T data) {
 		Node temp = head;
 		Node n = new Node(data);
@@ -24,6 +33,7 @@ public class StackUsingLinkedList<T> {
 			return true;
 		}
 	}
+	
 	public T pop() {
 		Node temp = head, temp1;
 		if(head == null) {
@@ -44,6 +54,7 @@ public class StackUsingLinkedList<T> {
 			}
 		}
 	}
+	
 	public String toString() {
 		Node temp = head;
 		String string = "";
@@ -54,5 +65,20 @@ public class StackUsingLinkedList<T> {
 			temp = temp.next;
 		}
 		return string;
+	}
+	
+	public T peek(int month) {
+		Node temp = head;
+		if(head == null) {
+			System.out.println("Stack is empty");
+			return null;
+		}
+		else {
+			while(month > 0) {
+				temp = temp.next;
+				month--;
+			}
+			return temp.data;
+		}
 	}
 }

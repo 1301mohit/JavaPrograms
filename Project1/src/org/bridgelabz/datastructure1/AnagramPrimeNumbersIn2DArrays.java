@@ -16,7 +16,7 @@ public class AnagramPrimeNumbersIn2DArrays {
 	public static void main(String[] args) {
 		String string1 = "";
 		String string2 = "";
-		int k = 0;
+		int count = 0;
 		System.out.println("Enter the range of the prime number");
 		int number = Utility.getInt();
 		ArrayList<Integer> prime = Utility.prime(number);
@@ -29,13 +29,13 @@ public class AnagramPrimeNumbersIn2DArrays {
 				string2 = Integer.toString(prime.get(j));
 				if(Utility.isAnagram(string1, string2))
 				{
-						anagram[k][0] = string1;
-						anagram[k][1] = string2;
-						k++;
+						anagram[count][0] = string1;
+						anagram[count][1] = string2;
+						count++;
 				}
 			}
 		}
-		for(int i=0; i<k; i++) {
+		for(int i=0; i<count; i++) {
 			for(int j=0; j<anagram[0].length; j++) {
 				System.out.printf(anagram[i][j]+" ");
 			}

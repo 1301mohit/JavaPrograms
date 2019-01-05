@@ -1,5 +1,13 @@
 package org.bridgelabz.datastructure;
 
+/**
+ * Purpose: Stack
+ * 
+ * @author  Mohit Kumar
+ * @version 1.0
+ * @since   03.01.2019
+ * @param <T> Generic type
+ */
 public class Stack<T> {
 	int capacity;
 	int top = -1;
@@ -8,6 +16,7 @@ public class Stack<T> {
 		this.capacity = capacity;
 		stack = new Object[capacity];
 	}
+	
 	public boolean push(T data) {
 		if(top == (capacity -1)) {
 			System.out.println("Stack Overflow");
@@ -18,6 +27,7 @@ public class Stack<T> {
 			return true;
 		}
 	}
+	
 	public T pop(T data) {
 		Object temp;
 		if(top == -1) {
@@ -30,6 +40,7 @@ public class Stack<T> {
 			return (T)temp;
 		}
 	}
+	
 	public String toString() {
 		String st = "";
 		for(int i=0; i<=top; i++) {
@@ -39,6 +50,7 @@ public class Stack<T> {
 		}
 		return st;
 	}
+	
 	public T peek() {
 		Object temp;
 		if(top == -1) {
@@ -50,12 +62,14 @@ public class Stack<T> {
 			return (T)temp;
 		}
 	}
+	
 	public boolean isEmpty() {
 		if(top == -1)
 			return true;
 		else
 			return false;
 	}
+	
 	public int size() {
 		return top + 1;
 	}

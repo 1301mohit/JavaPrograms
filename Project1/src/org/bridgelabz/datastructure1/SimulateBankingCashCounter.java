@@ -3,6 +3,15 @@ package org.bridgelabz.datastructure1;
 import org.bridgelabz.datastructure.Queue;
 import org.bridgelabz.utility.Utility;
 
+/**
+ * Purpose: A Program which creates Banking Cash Counter where people come in to deposit Cash and withdraw Cash. 
+ *          Have an input panel to add people to Queue to either deposit or withdraw money and dequeue the people.
+ *          Maintain the Cash Balance.
+ *
+ * @author  Mohit Kumar
+ * @version 1.0
+ * @since   03.01.2019
+ */
 public class SimulateBankingCashCounter {
 	public static void main(String[] args) {
 		System.out.println("Enter bank balance");
@@ -14,7 +23,6 @@ public class SimulateBankingCashCounter {
 		Queue<String> que = new Queue<String>(number);
 		System.out.println("Enter names of the people");
 		for(int i=0; i<number; i++) {
-			//System.out.println("i:"+i+"number:"+number);
 			String name = Utility.next();
 			que.enqueue(name);
 		}
@@ -40,7 +48,6 @@ public class SimulateBankingCashCounter {
 				switch(choice) {
 				case 1:
 						balance = balance + amount;
-						//System.out.println("balance:"+balance);
 						break;
 				case 2:
 					if(amount < balance)

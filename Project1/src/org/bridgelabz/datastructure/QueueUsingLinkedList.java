@@ -1,5 +1,13 @@
 package org.bridgelabz.datastructure;
 
+/**
+ * Purpose: Queue Using LinkedList.
+ * 
+ * @author  Mohit Kumar
+ * @version 1.0
+ * @since   04.01.2019
+ * @param <T> Generic type
+ */
 public class QueueUsingLinkedList<T> {
 	class Node{
 		T data;
@@ -9,6 +17,7 @@ public class QueueUsingLinkedList<T> {
 		}
 	}
 	Node head;
+	
 	public boolean enqueue(T data) {
 		Node temp = head;
 		Node n = new Node(data);
@@ -24,6 +33,7 @@ public class QueueUsingLinkedList<T> {
 		}
 		return true;
 	}
+	
 	public T dequeue() {
 		Node temp = head;
 		if(head == null) {
@@ -36,6 +46,7 @@ public class QueueUsingLinkedList<T> {
 			return temp.data;
 		}
 	}
+	
 	public String toString() {
 		Node temp = head;
 		String string = "";
@@ -47,6 +58,7 @@ public class QueueUsingLinkedList<T> {
 		}
 		return string;
 	}
+	
 	public T peek(int position) {
 		Node temp = head;
 		while(position > 1) {

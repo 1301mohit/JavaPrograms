@@ -5,19 +5,24 @@ import org.bridgelabz.datastructure.SingleLinkedList;
 
 import org.bridgelabz.utility.Utility;
 
+/**
+ * Purpose: Read a List of Numbers from a file and arrange it ascending Order in aLinked List. 
+ *          Take user input for a number, if found then pop the number out of the list 
+ *          else insert the number in appropriate position.
+ * 
+ * @author  Mohit Kumar 
+ * @version 1.0
+ * @since   02.01.2018
+ */
 public class OrderedList {
 	public static void main(String[] args) throws IOException {
 		SingleLinkedList<String> s = new SingleLinkedList<String>();
 		System.out.println("Enter path");
 		String path = Utility.next();
-		String str[] = Utility.readFromFile(path);
-		/*System.out.println("String Array");
-		for(int i=0;i<str.length; i++) {
-			System.out.println(str[i]+" ");
-		}*/
-		for(int i=0;i<str.length;i++) {
-			if(str[i] != null)
-				s.add(str[i]);
+		String string[] = Utility.readFromFile(path);
+		for(int i=0;i<string.length;i++) {
+			if(string[i] != null)
+				s.add(string[i]);
 		}
 		s.sort();
 		System.out.println("\nData in List in ascending order");

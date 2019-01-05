@@ -1,5 +1,13 @@
 package org.bridgelabz.datastructure;
 
+/**
+ * Purpose: Single LinkedList
+ * 
+ * @author  Mohit Kumar
+ * @version 1.0
+ * @since   02.01.2019
+ * @param <T> Generic type
+ */
 public class SingleLinkedList<T>{
 	class Node{
 		String data;
@@ -60,8 +68,6 @@ public class SingleLinkedList<T>{
 			return 0;
 		} else {
 			while ((temp.next != null) && (!temp.data.equals(data))) {
-				//System.out.println("temp.data:"+temp.data);
-				//System.out.println("data:"+data);
 				temp = temp.next;
 				pos++;
 			}
@@ -111,7 +117,6 @@ public class SingleLinkedList<T>{
 		Node temp;
 		temp = head;
 		int p = size();
-		//System.out.println(p);
 		while(p > 0) {
 			temp = head;
 			while(temp.next != null) {
@@ -125,8 +130,4 @@ public class SingleLinkedList<T>{
 			p--;
 		}
 	}
-	/*
-	 * public Object print() { Object obj; Node temp; temp = head; while(temp !=
-	 * null) { obj = temp.data; temp = temp.next; return obj; } return null; }
-	 */
 }
