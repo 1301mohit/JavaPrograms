@@ -33,19 +33,19 @@ public class Hashing {
 //	int element1[] = new int[4];
 	for(int i=0; i<element.length; i++) {
 		int remainder = Integer.parseInt(element[i]) % 11; 
-			System.out.println("I "+i);
-              System.out.println("Elem "+element[i]);
+			//System.out.println("I "+i);
+            //  System.out.println("Elem "+element[i]);
                if(a.get(remainder)==null) {
-            	   System.out.println("Elem  in if"+element[i]);
+            	//   System.out.println("Elem  in if"+element[i]);
             	  a.add(remainder,new LinkedList());
-            	   System.out.println(a.get(remainder)+"re"+remainder);
+            	//   System.out.println(a.get(remainder)+"re"+remainder);
             	  ((LinkedList)a.get(remainder)).add(element[i]);//.add(element[i]);
-            	   System.out.println("after"+ ((LinkedList)a.get(remainder))+" "+remainder);
+            	//   System.out.println("after"+ ((LinkedList)a.get(remainder))+" "+remainder);
             	   
     
             	  
                }else {
-            	   System.out.println("Elem  in else part"+element[i]);
+            //	   System.out.println("Elem  in else part"+element[i]);
             	   ((LinkedList)a.get(remainder)).add(element[i]);//.add(element[i]);
             	   
                }

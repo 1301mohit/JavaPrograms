@@ -10,8 +10,12 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
+import org.bridgelabz.datastructure.Deque;
+import org.bridgelabz.datastructure.Queue;
+import org.bridgelabz.datastructure.QueueUsingLinkedList;
 import org.bridgelabz.datastructure.SingleLinkedList;
 import org.bridgelabz.datastructure.Stack;
+import org.bridgelabz.datastructure.StackUsingLinkedList;
 
 /******************************************************************************************
  *  purpose: Declare Utility Class implements methods which are called by any other class. 
@@ -22,7 +26,9 @@ import org.bridgelabz.datastructure.Stack;
  ******************************************************************************************/
 
 public class Utility {
-	static Scanner scanner = new Scanner(System.in);	//Create the static reference variable of Scanner class
+	
+	//Create the static reference variable of Scanner class
+	static Scanner scanner = new Scanner(System.in);	
 	
 	/**
 	 *  purpose: This method is used to get integer value from user.
@@ -102,7 +108,7 @@ public class Utility {
 	}
 	
 	/**
-	 * purpose: This method is used to get power of integer value.
+	 * purpose: This method is used to get power in integer type.
 	 * 
 	 * @param   integer base
 	 * @param   integer exponent
@@ -119,7 +125,7 @@ public class Utility {
 	}
 	
 	/**
-	 * purpose: By using this method we can calculate the power of double.
+	 * purpose: By using this method we can calculate the power in double type.
 	 * 
 	 * @param   double base
 	 * @param   double exponent
@@ -136,7 +142,7 @@ public class Utility {
 	}
 	
 	/**
-	 * purpose: This method is used to replace <<username>> with the proper name of the user
+	 * purpose: This method is used to replace <<username>> with the proper name of the user.
 	 * 
 	 * @return  String Whole String with the name of the user
 	 */
@@ -156,7 +162,7 @@ public class Utility {
 		return (string1 + string2 + string3);
 	}
 	
-	/*
+	/**
 	 * purpose: This method is used for get Percentage of Head vs Tails
 	 * 
 	 * @parameter Double number
@@ -190,6 +196,7 @@ public class Utility {
 	 * @param   year
 	 * @return  String
 	 */
+	
 	public static boolean isLeapYear(int year) {
 		    if(year % 400 == 0 || year % 4 == 0 && year % 100 != 0 ) {
 		    	return true;
@@ -250,13 +257,16 @@ public class Utility {
 		//By using this loop we calculate all factors of n
 		for(int i=2; i*i<=number; i++) {	
 			flag = false;
+			
 			//if factor is prime than true else false
 			if(number % i == 0) 
 				flag = isPrime(i);
+			
 			//if flag is true than concatenate all prime factor in a single string
 			if(flag)
 				st = st + i + " ";
 		}
+		
 		return st;
 	}
 	
@@ -440,7 +450,7 @@ public class Utility {
 		return arr;
 	}
 	
-	/*
+	/**
 	 * Purpose: This method is used to check two string is anagram or not
 	 * 
 	 * @param   string1 String
@@ -588,6 +598,7 @@ public class Utility {
 	 * 
 	 * @return  integer array
 	 */
+	
 	public static int[] inputArray() {
 		System.out.println("Enter the size of the array");
 		int size = Utility.getInt();
@@ -604,6 +615,7 @@ public class Utility {
 	 * 
 	 * @param print
 	 */
+	
 	public static void printArray(int print[]) {
 		for(int i=0; i<print.length; i++) {
 			System.out.print(print[i]+" ");
@@ -846,7 +858,7 @@ public class Utility {
 	 * 
 	 * @param t  type double and t is temperature(in Fahrenheit)
 	 * @param v  type double and v is the wind speed(in miles per hour)
-	 * @return double
+	 * @return double windchill
 	 */
 	public static double calculateWindChill(double t, double v) {
 		double w = 35.74 + 0.6215 + (0.4275 * t - 35.75) *(Math.pow(v,0.18));
@@ -878,10 +890,10 @@ public class Utility {
 				System.out.print("Enter row number:");
 				int row = Utility.getInt();
 				System.out.print("Enter column number:");
-				int col = Utility.getInt();
-				if(row == 0 && col == 0 || row == 0 && col == 1 || row == 0 && col == 2 || row == 1 && col == 0 || row == 1 && col == 1 || row == 1 && col == 2 || row == 2 && col == 0 || row == 2 && col == 1 || row == 2 && col == 2) {
-					if(board[row][col] == '_') {
-						board[row][col] = 'O';
+				int column = Utility.getInt();
+				if(row == 0 && column == 0 || row == 0 && column == 1 || row == 0 && column == 2 || row == 1 && column == 0 || row == 1 && column == 1 || row == 1 && column == 2 || row == 2 && column == 0 || row == 2 && column == 1 || row == 2 && column == 2) {
+					if(board[row][column] == '_') {
+						board[row][column] = 'O';
 						count++;
 						flag = true;
 						Utility.twoDimArray(board);
@@ -907,9 +919,9 @@ public class Utility {
 				System.out.println();
 				System.out.println("Computer Chance");
 				int row = r.nextInt(3);
-				int col = r.nextInt(3);
-				if(board[row][col] == '_') {
-					board[row][col] = 'X';
+				int column = r.nextInt(3);
+				if(board[row][column] == '_') {
+					board[row][column] = 'X';
 					count++;
 					flag = false;
 					Utility.twoDimArray(board);
@@ -962,6 +974,7 @@ public class Utility {
 	 * @param sum initial value of sum.
 	 * @return int lowest number of note
 	 */
+	
 	public static int fewest(int amount, int sum) {
 		int remainder;
 		if(amount == 0)
@@ -1025,6 +1038,7 @@ public class Utility {
 	 * @param y integer y is year
 	 * @return String day of the week.
 	 */
+	
 	public static int dayOfWeek(int m, int d, int y) {
 		
 		int y0 = y - (14 - m) / 12;
@@ -1032,7 +1046,6 @@ public class Utility {
 		int m0 = m + 12 * ((14 - m) / 12) - 2;
 		int d0 = (d + x + 31 * m0 / 12 ) % 7; 
 		return d0;
-		//return day[d0];
 	}
 	
 	/**
@@ -1065,7 +1078,7 @@ public class Utility {
 	 * @param    P principal loan amount
 	 * @param    Y years to pay off
 	 * @param    R percent interest
-	 * @return   double Monthly Payement
+	 * @return   double Monthly Payment
 	 */
 	
 	public static double monthlyPayment(double P, double Y, double R) {
@@ -1180,6 +1193,7 @@ public class Utility {
 	 * @param   left it is left index of the array
 	 * @param   right it is right index of the array
 	 */
+	
 	public static void mergeSort(int[] arr, int left, int right) {
 		if(left < right) {
 			int mid = left + (right - left) / 2;
@@ -1294,27 +1308,38 @@ public class Utility {
 	 * @param   expression
 	 * @return  boolean 
 	 */
+	
 	public static boolean isBalancedParentheses(String expression) {
 		int size = expression.length();
+		boolean flag = false;
 		Stack<Character> stack = new Stack<Character>(size);
 		char expressionArray[] = expression.toCharArray();
 		for(int i=0; i<expressionArray.length;i++) {
-			if(expressionArray[i] == '(' || expressionArray[i] == '{' || expressionArray[i] == '[')
+			if(expressionArray[i] == '(' || expressionArray[i] == '{' || expressionArray[i] == '[') {
 				stack.push(expressionArray[i]);
-			else {
-				switch(expressionArray[i]) {
-				case ')':
-					if(stack.pop(expressionArray[i]) != '(')
-						return false;
-					break;
-				case '}':
-					if(stack.pop(expressionArray[i]) != '{')
-						return false;
-					break;
-				case ']':
-					if(stack.pop(expressionArray[i]) != '[')
-						return false;
+				flag = true;
+			}
+			else if(expressionArray[i] == ')' || expressionArray[i] == '}' || expressionArray[i] == ']'){
+				if(flag) {
+					switch(expressionArray[i]) {
+					case ')':
+						System.out.println(stack.pop(expressionArray[i]));
+						if( stack.pop(expressionArray[i]) != '(')
+							return false;
+						break;
+					case '}':
+						if(flag && stack.pop(expressionArray[i]) != '{')
+							return false;
+						break;
+					case ']':
+						if(flag && stack.pop(expressionArray[i]) != '[')
+							return false;
+						break;
+					default:
+						System.out.println("Wrong Expression");
+					}
 				}
+				stack.push(expressionArray[i]);
 			}
 		}
 		return stack.isEmpty();
@@ -1326,6 +1351,7 @@ public class Utility {
 	 * @param   number User input
 	 * @return  long factorial value of the number
 	 */
+	
 	public static long factorial(int number) {
 		int product = 1;
 		while(number > 0) {
@@ -1341,12 +1367,275 @@ public class Utility {
 	 * @param   node
 	 * @return  long array
 	 */
+	
 	public static long[] numberOfBinarySeachTree(int[] node) {
 		long numberOfBinarySearchTree[] = new long[node.length];
 		for(int i=0; i<node.length; i++) {
 			numberOfBinarySearchTree[i] = Utility.factorial(2*node[i]) / (Utility.factorial(node[i]+1) * Utility.factorial(node[i]));
 		}
 		return numberOfBinarySearchTree;
+	}
+	
+	/**
+	 * Purpose: To display the anagram prime number by using 2D array.
+	 * 
+	 * @param number range of the anagram prime number.
+	 * @return String two dimensional array of anagram prime number.
+	 */
+
+	public static String[][] anagramPrimeNumberIn2DArrays(int number) {
+		String string1 = "";
+		String string2 = "";
+		int count = 0;
+		ArrayList<Integer> prime = prime(number);
+		int row = prime.size();
+		String anagram[][] = new String[row][2];
+		System.out.println("\nPrime numbers that are Anagram\n");
+		for(int i=0; i<prime.size(); i++) {
+			for(int j=i+1; j<prime.size(); j++) {
+				string1 = Integer.toString(prime.get(i));
+				string2 = Integer.toString(prime.get(j));
+				if(Utility.isAnagram(string1, string2))
+				{
+						anagram[count][0] = string1;
+						anagram[count][1] = string2;
+						count++;
+				}
+			}
+		}
+		return anagram;
+	}
+	
+	/**
+	 * Purpose: To display the anagram prime number by using Queue LinkedList.
+	 * 
+	 * @param number range of the anagram prime number.
+	 * @return Queue Linked List of anagram prime number.
+	 */
+
+	public static QueueUsingLinkedList<String> anagramPrimeNumbersUsingQueueLinkedList(int number) {
+		QueueUsingLinkedList<String> queueLinkedList = new QueueUsingLinkedList<String>();
+		String string1 = "";
+		String string2 = "";
+		
+		ArrayList<Integer> prime = prime(number);
+		System.out.println("\nPrime numbers that are Anagram\n");
+		for(int i=0; i<prime.size(); i++) {
+			for(int j=i+1; j<prime.size(); j++) {
+				string1 = Integer.toString(prime.get(i));
+				string2 = Integer.toString(prime.get(j));
+				if(Utility.isAnagram(string1, string2))
+				{
+						queueLinkedList.enqueue(string1+" "+string2);
+				}
+			
+			}
+		}
+		return queueLinkedList;
+	}
+	
+	/**
+	 * Purpose: To display the anagram prime number by using Stack LinkedList.
+	 * 
+	 * @param number range of the anagram prime number.
+	 * @return Stack Linked List of anagram prime number.
+	 */
+
+	public static StackUsingLinkedList<String> anagramPrimeNumbersUsingStackLinkedList(int number) {
+		StackUsingLinkedList<String> stackLinkedList = new StackUsingLinkedList<String>();
+		String string1 = "";
+		String string2 = "";
+		
+		ArrayList<Integer> prime = prime(number);
+		System.out.println("\nPrime numbers that are Anagram\n");
+		for(int i=0; i<prime.size(); i++) {
+			for(int j=i+1; j<prime.size(); j++) {
+				string1 = Integer.toString(prime.get(i));
+				string2 = Integer.toString(prime.get(j));
+				if(Utility.isAnagram(string1, string2))
+				{
+						stackLinkedList.push(string1+" "+string2);
+				}
+			
+			}
+		}
+		return stackLinkedList;
+	}
+	
+	/**
+	 * Purpose: To check the word is palindrome or not.
+	 *  
+	 * @param word User input
+	 * @return true or false
+	 */
+
+	public static boolean palindromeChecker(String word) {
+		int size = word.length();
+		boolean isPalindrome = true;
+		Deque<Character> d = new Deque<Character>(size);
+		char ch[] = word.toCharArray();
+		for(int i=0; i<ch.length; i++)
+			d.addRear(ch[i]);
+		for(int i=0; i<ch.length/2; i++) {
+			if(d.removeFront() != d.removeRear() ) {
+				isPalindrome = false;
+				break;
+			}	
+		}
+		return isPalindrome;
+	}
+	
+	/**
+	 * Purpose: To store the prime number in two dimensional array.
+	 * 
+	 * @param   range User input
+	 * @return  Prime number present in two dimensional String array.
+	 */
+	
+	public static String[][] primeNumbersInA2DArray(int range){
+		String[][] prime = new String[range/100][100];
+		
+		System.out.println("prime numbers in a 2D Array");
+		System.out.println("---------------------------");
+		System.out.println();
+		for(int i=0; i<prime.length; i++) {
+				prime[i][0] = Integer.toString(i*100)+"-"+Integer.toString(i * 100 + 100)+" ";
+			
+		}
+		int i=0, j=0, number = 2;
+		while(number < range) {
+			if(isPrime(number)) {
+			
+			if(number < (i + 1) * 100)
+				j++;
+			else {
+				i++;
+				j = 1;
+			}
+			prime[i][j] = Integer.toString(number);
+			}
+			number++;
+		}
+		return prime;
+	}
+
+	/**
+	 * Purpose:  To check the balance after all deposit or Withdraw.
+	 * 
+	 * @param    number number of people want to deposite or withdraw money.
+	 * @param    queue it helps to arrange the people
+	 * @param    balance initial balance before deposite or withdraw.
+	 * @return   balance in double.
+	 */
+	public static double simulateBankingCashCounter(int number, Queue<String> queue, double balance) {
+		double amount = 0.0;
+		int choice = 0;
+		for(int i=0; i<number; i++) {
+			System.out.println("\nName:"+queue.dequeue());
+			System.out.println("1.Deposite Cash");
+			System.out.println("2.Withdraw Cash");
+			do {
+				System.out.print("\nEnter Your Choice:");
+				choice = Utility.getInt();
+				if(choice != 1 && choice != 2)	
+					System.out.println("Please enter right choice");
+			}while(choice != 1 && choice != 2);
+			do {
+			System.out.println("\nEnter your amount");
+			amount = Utility.getDouble();
+			if(amount > balance && choice == 2) {
+				System.out.println("\nBalance is "+balance);
+				System.out.println("Please enter amount less than or equal to "+balance);
+			}
+			}while(choice == 2 && amount > balance);
+				switch(choice) {
+				case 1:
+						balance = balance + amount;
+						break;
+				case 2:
+					if(amount < balance)
+						balance = balance - amount;
+					break;
+				}
+		}
+		return balance;
+	}
+	
+	/**
+	 * Purpose: Read a List of Numbers from a file and arrange it ascending Order in aLinked List. 
+     *          Take user input for a number, if found then pop the number out of the list 
+     *          else insert the number in appropriate position.
+     *          
+	 * @param   path Where file is present
+	 * @return  Single LinkedList in sorted form
+	 * @throws IOException
+	 */
+
+	public static SingleLinkedList<String> orderedList(String path) throws IOException {
+		SingleLinkedList<String> orderedList = new SingleLinkedList<String>();
+		String string[] = Utility.readFromFile(path);
+		for(int i=0;i<string.length;i++) {
+			if(string[i] != null)
+				orderedList.add(string[i]);
+		}
+		orderedList.sort();
+		System.out.println("\nData in List in ascending order");
+		orderedList.display();
+		System.out.println("\nEnter number");
+		String number = Utility.next();
+		int position = orderedList.search(number);
+		if(position == 0) {
+			System.out.println("\n\nData is not found");
+			orderedList.add(number);
+			orderedList.sort();
+			System.out.println("\n\nYour data is add in the list");
+			orderedList.display();
+		}
+		else {
+			System.out.println("Data is found");
+			orderedList.remove(position);
+			System.out.println("\nYour data is remove in the list");
+			orderedList.display();
+		}
+		return orderedList;
+	}
+	
+	/**
+	 * Purpose: Read the Text from a file, split it into words and arrange it as Linked List.
+     *          Take a user input to search a Word in the List. If the Word is not found then add it
+     *          to the list, and if it found then remove the word from the List. In the end save the
+     *          list into a file.
+	 * 
+	 * @param   path Where the file is present.
+	 * @return  unordered LinkedList
+	 * @throws  IOException
+	 */
+
+	public static SingleLinkedList<String> unOrderedList(String path) throws IOException {
+		SingleLinkedList<String> unorderedList = new SingleLinkedList<String>();
+		String str[] = Utility.readFromFile(path);
+		System.out.println("\nLinkedList elements");
+		for(int i=0; i<str.length; i++) {
+			if(str[i] != null)
+				unorderedList.add(str[i]);
+		}
+		unorderedList.display();
+		System.out.println("\nEnter searched element");
+		String searchData = Utility.next();
+		int a = unorderedList.search(searchData);
+		//System.out.println("a:"+a);
+		if(a == 0) {
+			System.out.println("\nData is not found");
+			unorderedList.add(searchData);
+			System.out.println("Your data is add in this list");
+		}
+		else {
+			System.out.println("\nData is found");
+			unorderedList.remove(a);
+			System.out.println("\nYour data is remove in this list");
+		}
+		unorderedList.display();
+		return unorderedList;
 	}
 }
 

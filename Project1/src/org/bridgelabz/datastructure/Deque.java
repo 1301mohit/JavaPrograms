@@ -17,13 +17,20 @@ public class Deque<T> {
 		this.capacity = capacity;
 		deque = new Object[capacity];
 	}
-	public boolean addRear(T item) {
+	
+	/*
+	 * Purpose: Add data in Dequeue thougth rear.
+	 * 
+	 * @param   data 
+	 * @return  true or false
+	 */
+	public boolean addRear(T data) {
 		if(rear == capacity - 1 || rear+1 == front) {
 			System.out.println("Deque is full");
 			return false;
 		}
 		else {
-			deque[++rear] = item;
+			deque[++rear] = data;
 			if(front == -1) {
 				front = 0;
 			}
@@ -31,6 +38,11 @@ public class Deque<T> {
 		}
 	}
 	
+	/*
+	 * Purpose: Remove data in Dequeue through front.
+	 * 
+	 * @return  generic removed data
+	 */
 	public T removeFront() {
 		T temp;
 		if(front == -1) {
@@ -55,6 +67,11 @@ public class Deque<T> {
 		}
 	}
 	
+	/*
+	 * Purpose: Remove data from dequeue through rear.
+	 * 
+	 * @return  generic removed data
+	 */
 	public T removeRear() {
 		T temp;
 		if(rear == -1) {
@@ -73,30 +90,41 @@ public class Deque<T> {
 		}
 	}
 	
-	public boolean addFront(T item) {
+	/*
+	 * Purpose: Add data in Dequeue through front
+	 * 
+	 * @param   data 
+	 * @return  true or false
+	 */
+	public boolean addFront(T data ) {
 		if(front == rear + 1) {
 			System.out.println("Queue is full");
 			return false;
 		}
 		else {
 		if(front == -1) {
-			deque[++front] = item;
+			deque[++front] = data ;
 			rear = 0;
 			return true;
 		}
 		else {
 			if(front == 0) {
 				front = capacity - 1;
-				deque[front] = item;
+				deque[front] = data ;
 			}
 			else {
-				deque[--front] = item;
+				deque[--front] = data ;
 			}
 			return true;
 		}
 		}
 	}
 	
+	/*
+	 * Purpose: By using this method we can display the data of the dequeue.
+	 * 
+	 * @return  String data in String form
+	 */
 	public String toString() {
 		String string = "";
 		if(front != -1) {
@@ -117,6 +145,11 @@ public class Deque<T> {
 		return string;
 	}
 	
+	/*
+	 * Purpose: To check Dequeue is empty or not.
+	 * 
+	 * @return  True or False.
+	 */
 	public boolean isEmpty() {
 		if(front == -1 && rear == -1)
 			return true;
@@ -124,6 +157,11 @@ public class Deque<T> {
 			return false;
 	}
 	
+	/**
+	 * Purpose: To calculate the number of the data present in the Dequeue.
+	 * 
+	 * @return  integer number of data
+	 */
 	public int size() {
 		int count = 0;
 		if(front != -1) {

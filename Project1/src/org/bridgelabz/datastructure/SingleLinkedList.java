@@ -17,9 +17,15 @@ public class SingleLinkedList<T>{
 		}
 	}
 	Node head;
-
-	public boolean add(String ele) {
-		Node n = new Node(ele);
+	
+	/*
+	 * Purpose: Add the new node in the linkedlist.
+	 * 
+	 * @param   data data of the new node.
+	 * @return  true or False.
+	 */
+	public boolean add(String data) {
+		Node n = new Node(data);
 		Node temp;
 		if (head == null) {
 			head = n;
@@ -33,7 +39,10 @@ public class SingleLinkedList<T>{
 			return true;
 		}
 	}
-
+	
+	/*
+	 * Purpose: Display the data of the LinkedList.
+	 */
 	public void display() {
 		Node temp;
 		temp = head;
@@ -47,7 +56,12 @@ public class SingleLinkedList<T>{
 			temp = temp.next;
 		}
 	}
-
+	
+	/*
+	 * Purpose: Number of node present in the linkedlist.
+	 * 
+	 * @return  integer number of node present in the linkedlist.
+	 */
 	public int size() {
 		Node temp;
 		temp = head;
@@ -58,7 +72,13 @@ public class SingleLinkedList<T>{
 		}
 		return count;
 	}
-
+	
+	/*
+	 * Purpose: Search the data in the LinkedList.
+	 *  
+	 * @param   data 
+	 * @return  integer position of the searched data.
+	 */
 	public int search(String data) {
 		Node temp;
 		temp = head;
@@ -77,20 +97,26 @@ public class SingleLinkedList<T>{
 				return pos;
 		}
 	}
-
-	public String remove(int pos) {
+	
+	/*
+	 * Purpose: Remove the data from a particular position
+	 * 
+	 * @param   position 
+	 * @return  String removed data
+	 */
+	public String remove(int position) {
 		Node temp, temp1;
 		temp = head;
 		if (head == null) {
 			System.out.println("No element is there");
 			return null;
 		} else {
-			if (pos == 1) {
+			if (position == 1) {
 				head = temp.next;
 				return temp.data;
 			} else
-				while (temp.next.next != null && pos > 2) {
-					pos--;
+				while (temp.next.next != null && position > 2) {
+					position--;
 					temp = temp.next;
 				}
 			temp1 = temp.next;
@@ -98,7 +124,12 @@ public class SingleLinkedList<T>{
 			return temp1.data;
 		}
 	}
-
+	
+	/*
+	 * Purpose: Convert LinkedList to String array.
+	 * 
+	 * @return String array LinkedList data in String array form
+	 */
 	public String[] toArray() {
 		Node temp;
 		temp = head;
@@ -112,7 +143,10 @@ public class SingleLinkedList<T>{
 		return obj;
 
 	}
-
+	
+	/*
+	 * Purpose: Sort the linkedlist in ascending order based on data.
+	 */
 	public void sort() {
 		Node temp;
 		temp = head;

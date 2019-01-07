@@ -18,6 +18,12 @@ public class QueueUsingLinkedList<T> {
 	}
 	Node head;
 	
+	/*
+	 * Purpose: To add new node in the queue.
+	 * 
+	 * @param   data data of new node.
+	 * @return  True or False.
+	 */
 	public boolean enqueue(T data) {
 		Node temp = head;
 		Node n = new Node(data);
@@ -34,6 +40,11 @@ public class QueueUsingLinkedList<T> {
 		return true;
 	}
 	
+	/*
+	 * Purpose: To remove node from the queue.
+	 * 
+	 * @return  generic data of the removed node.
+	 */
 	public T dequeue() {
 		Node temp = head;
 		if(head == null) {
@@ -47,6 +58,9 @@ public class QueueUsingLinkedList<T> {
 		}
 	}
 	
+	/*
+	 * Purpose: Display the data of the queue.
+	 */
 	public String toString() {
 		Node temp = head;
 		String string = "";
@@ -59,6 +73,12 @@ public class QueueUsingLinkedList<T> {
 		return string;
 	}
 	
+	/*
+	 * Purpose: To get the data according to the position.
+	 * 
+	 * @param   position 
+	 * @return  generic data of the position
+	 */
 	public T peek(int position) {
 		Node temp = head;
 		while(position > 1) {
@@ -66,5 +86,20 @@ public class QueueUsingLinkedList<T> {
 			position--;
 		}
 		return temp.data;
+	}
+	
+	/**
+	 * Purpose: Number of node present in the queue.
+	 *  
+	 * @return  integer
+	 */
+	public int size() {
+		Node temp = head;
+		int count = 0;
+		while(temp != null) {
+			count++;
+			temp = temp.next;
+		}
+		return count;
 	}
 }

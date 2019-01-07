@@ -18,6 +18,12 @@ public class StackUsingLinkedList<T> {
 	}
 	Node head;
 	
+	/*
+	 * Purpose: To add new node.
+	 * 
+	 * @param   data data of the new node
+	 * @return  True or False to check node is add or not in stack.
+	 */
 	public boolean push(T data) {
 		Node temp = head;
 		Node n = new Node(data);
@@ -34,6 +40,11 @@ public class StackUsingLinkedList<T> {
 		}
 	}
 	
+	/*
+	 * Purpose: To remove node
+	 * 
+	 * @return  generic data of the removed node.
+	 */
 	public T pop() {
 		Node temp = head, temp1;
 		if(head == null) {
@@ -55,6 +66,9 @@ public class StackUsingLinkedList<T> {
 		}
 	}
 	
+	/*
+	 * Purpose: Display the data of Stack LinkedList.
+	 */
 	public String toString() {
 		Node temp = head;
 		String string = "";
@@ -67,18 +81,39 @@ public class StackUsingLinkedList<T> {
 		return string;
 	}
 	
-	public T peek(int month) {
+	/*
+	 * Purpose: To get the data of any position.
+	 * 
+	 * @param   position 
+	 * @return  generic data of the position.
+	 */
+	public T peek(int position) {
 		Node temp = head;
 		if(head == null) {
 			System.out.println("Stack is empty");
 			return null;
 		}
 		else {
-			while(month > 0) {
+			while(position > 0) {
 				temp = temp.next;
-				month--;
+				position--;
 			}
 			return temp.data;
 		}
+	}
+	
+	/*
+	 * Purpose: Number of node present in the stack linkedlist.
+	 * 
+	 * @return  integer number of node
+	 */
+	public int size() {
+		Node temp = head;
+		int count = 0;
+		while(temp != null) {
+			count++;
+			temp = temp.next;
+		}
+		return count;
 	}
 }

@@ -17,6 +17,12 @@ public class Stack<T> {
 		stack = new Object[capacity];
 	}
 	
+	/*
+	 * Purpose: Add the new data in the stack.
+	 * 
+	 * @param   data new data
+	 * @return  True or False check new data add or not
+	 */
 	public boolean push(T data) {
 		if(top == (capacity -1)) {
 			System.out.println("Stack Overflow");
@@ -28,6 +34,12 @@ public class Stack<T> {
 		}
 	}
 	
+	/*
+	 * Purpose: Remove the data from the stack.
+	 * 
+	 * @param   data 
+	 * @return  generic removed data.
+	 */
 	public T pop(T data) {
 		Object temp;
 		if(top == -1) {
@@ -41,6 +53,9 @@ public class Stack<T> {
 		}
 	}
 	
+	/*
+	 * Purpose: To display the data.
+	 */
 	public String toString() {
 		String st = "";
 		for(int i=0; i<=top; i++) {
@@ -51,6 +66,11 @@ public class Stack<T> {
 		return st;
 	}
 	
+	/*
+	 * Purpose: To peek the last data of the stack.
+	 *  
+	 * @return  generic last data of the stack.
+	 */
 	public T peek() {
 		Object temp;
 		if(top == -1) {
@@ -63,6 +83,11 @@ public class Stack<T> {
 		}
 	}
 	
+	/*
+	 * Purpose: To check stack is empty or not.
+	 * 
+	 * @return True or False.
+	 */
 	public boolean isEmpty() {
 		if(top == -1)
 			return true;

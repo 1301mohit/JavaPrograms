@@ -1,7 +1,5 @@
 package org.bridgelabz.datastructure1;
 
-import java.util.ArrayList;
-
 import org.bridgelabz.utility.Utility;
 
 /**
@@ -14,32 +12,16 @@ import org.bridgelabz.utility.Utility;
 public class AnagramPrimeNumbersIn2DArrays {
 
 	public static void main(String[] args) {
-		String string1 = "";
-		String string2 = "";
-		int count = 0;
 		System.out.println("Enter the range of the prime number");
 		int number = Utility.getInt();
-		ArrayList<Integer> prime = Utility.prime(number);
-		int row = prime.size();
-		String anagram[][] = new String[row][2];
-		System.out.println("\nPrime numbers that are Anagram\n");
-		for(int i=0; i<prime.size(); i++) {
-			for(int j=i+1; j<prime.size(); j++) {
-				string1 = Integer.toString(prime.get(i));
-				string2 = Integer.toString(prime.get(j));
-				if(Utility.isAnagram(string1, string2))
-				{
-						anagram[count][0] = string1;
-						anagram[count][1] = string2;
-						count++;
-				}
-			}
-		}
-		for(int i=0; i<count; i++) {
+		String anagram[][] = Utility.anagramPrimeNumberIn2DArrays(number);
+		for(int i=0; i<anagram.length; i++) {
 			for(int j=0; j<anagram[0].length; j++) {
-				System.out.printf(anagram[i][j]+" ");
+				if(anagram[i][j] != null)
+					System.out.printf(anagram[i][j]+" ");
 			}
-			System.out.println();
+			if(anagram[i][0] != null)
+				System.out.println();
 		}
 	}
 

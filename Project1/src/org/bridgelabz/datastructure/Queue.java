@@ -18,6 +18,12 @@ public class Queue<T> {
 		que = new Object[capacity];
 	}
 	
+	/*
+	 * Purpose: To add the new data in queue.
+	 * 
+	 * @param   data data of new node.
+	 * @return  True or False.
+	 */
 	public boolean enqueue(T data) {
 		if(rear == capacity - 1) {
 			System.out.println("Queue is full");
@@ -31,6 +37,11 @@ public class Queue<T> {
 		}
 	}
 	
+	/*
+	 * Purpose: To remove the data from the queue.
+	 * 
+	 * @return  generic removed data.
+	 */
 	public T dequeue() {
 		T temp;
 		if(front == -1) {
@@ -47,6 +58,9 @@ public class Queue<T> {
 		}
 	}
 	
+	/*
+	 * Purpose: Display the data of the queue.
+	 */
 	public String toString() {
 		if(front == -1) {
 			System.out.println("Empty Queue");
@@ -63,12 +77,22 @@ public class Queue<T> {
 		}
 	}
 	
+	/*
+	 * Purpose: To check queue is empty or not
+	 * 
+	 * @return  True or False
+	 */
 	public boolean isEmpty(){
 		if(front == -1)
 			return true;
 		return false;
 	}
 	
+	/*
+	 * Purpose: To find out the size of the queue
+	 * 
+	 * @return  integer number of data present in the queue.
+	 */
 	public int size() {
 		int count = 0;
 		for(int i=front;i<=rear;i++) {
