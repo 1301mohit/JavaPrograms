@@ -6,9 +6,14 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.bridgelabz.datastructure.Deque;
 import org.bridgelabz.datastructure.Queue;
@@ -16,6 +21,11 @@ import org.bridgelabz.datastructure.QueueUsingLinkedList;
 import org.bridgelabz.datastructure.SingleLinkedList;
 import org.bridgelabz.datastructure.Stack;
 import org.bridgelabz.datastructure.StackUsingLinkedList;
+import org.bridgelabz.objectorientedprograms.Rice;
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.JsonParseException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 
 /******************************************************************************************
  *  purpose: Declare Utility Class implements methods which are called by any other class. 
@@ -1286,6 +1296,20 @@ public class Utility {
 		return str;
 	}
 	
+	public static String readFromFile1(String path) throws IOException {
+		File f = new File(path);
+		FileReader fr = new FileReader(f);  //Path:"/home/admin1/Documents/bcd.txt"
+		BufferedReader br = new BufferedReader(fr);
+		String string = "";
+		String line = br.readLine();
+		while(line != null) {
+			string = string + line;
+			line = br.readLine();
+		}
+		br.close();
+		return string;
+	}
+	
 	/**
 	 * Purpose: This method helps to write in file.
 	 * 
@@ -1637,6 +1661,47 @@ public class Utility {
 		unorderedList.display();
 		return unorderedList;
 	}
+	
+	private static ObjectMapper mapper;
+	static {
+		mapper = new ObjectMapper();
+	}
+	public static String convertJavaToJson(Object object) {
+		String jsonResult = "";
+		try {
+			jsonResult = mapper.writeValueAsString(object);
+		} catch (JsonGenerationException e) {
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return jsonResult;
+	}
+	
+	public static <T> T convertJsonToJava(String JsonString, Class<T> cls) {
+		T javaresult = null;
+			try {
+				javaresult = mapper.readValue(JsonString, cls);
+			} catch (JsonParseException e) {
+				e.printStackTrace();
+			} catch (JsonMappingException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			return javaresult;
+	}
+
+	public static String convertString(String message, String change, String required) {
+		Pattern p = Pattern.compile(change);
+		Matcher m = p.matcher(message);
+		message = m.replaceAll(required);
+		return message;
+	}
+	
+	
 }
 
 
