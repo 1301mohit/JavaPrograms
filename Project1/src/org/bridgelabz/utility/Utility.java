@@ -6,10 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -21,7 +18,6 @@ import org.bridgelabz.datastructure.QueueUsingLinkedList;
 import org.bridgelabz.datastructure.SingleLinkedList;
 import org.bridgelabz.datastructure.Stack;
 import org.bridgelabz.datastructure.StackUsingLinkedList;
-import org.bridgelabz.objectorientedprograms.Rice;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
@@ -1700,7 +1696,6 @@ public class Utility {
 		message = m.replaceAll(required);
 		return message;
 	}
-	
 	
 }
 

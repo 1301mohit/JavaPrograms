@@ -59,6 +59,22 @@ public class QueueUsingLinkedList<T> {
 	}
 	
 	/*
+	 * Purpose: To peek data of each node from the queue.
+	 * 
+	 * @return  generic data of the removed node.
+	 */
+	public T peek1() {
+		Node temp = head;
+		if(head == null) {
+			System.out.println("Queue is empty");
+			return null;
+		}
+		else {
+			head = temp.next;
+			return temp.data;
+		}
+	}
+	/*
 	 * Purpose: Display the data of the queue.
 	 */
 	public String toString() {

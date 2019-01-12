@@ -1,7 +1,6 @@
 package org.bridgelabz.objectorientedprograms;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 import org.bridgelabz.utility.Utility;
@@ -28,9 +27,7 @@ public class InventoryDataManagement {
 		rice.setTotal(rice.getPrice(), rice.getWeight());
 		pulse.setTotal(pulse.getPrice(), pulse.getWeight());
 		wheat.setTotal(wheat.getPrice(), wheat.getWeight());
-//		objectMapper.writeValue(new FileOutputStream("/home/admin1/Documents/rice.json"), rice);
-//		objectMapper.writeValue(new FileOutputStream("/home/admin1/Documents/pulses.json"), pulse);
-//		objectMapper.writeValue(new FileOutputStream("/home/admin1/Documents/wheats.json"), wheat);
+
 		String jsonRice = Utility.convertJavaToJson(rice);
 		String jsonPulse = Utility.convertJavaToJson(pulse);
 		String jsonWheat = Utility.convertJavaToJson(wheat);
@@ -38,6 +35,17 @@ public class InventoryDataManagement {
 		System.out.println(jsonPulse);
 		System.out.println(jsonWheat);
 	}
-		
-
 }
+
+
+
+
+
+
+
+
+
+
+//objectMapper.writeValue(new FileOutputStream("/home/admin1/Documents/rice.json"), rice);
+//objectMapper.writeValue(new FileOutputStream("/home/admin1/Documents/pulses.json"), pulse);
+//objectMapper.writeValue(new FileOutputStream("/home/admin1/Documents/wheats.json"), wheat);

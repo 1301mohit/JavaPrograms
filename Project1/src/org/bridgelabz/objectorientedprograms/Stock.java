@@ -1,6 +1,14 @@
 package org.bridgelabz.objectorientedprograms;
 
-public class Stock {
+//import java.io.Serializable;
+
+public class Stock //implements Serializable
+{
+	@Override
+	public String toString() {
+		return "Stock [stockName=" + stockName + ", numberOfShare=" + numberOfShare + ", sharePrice=" + sharePrice
+				+ "]";
+	}
 	String stockName;
 	int numberOfShare;
 	double sharePrice;
