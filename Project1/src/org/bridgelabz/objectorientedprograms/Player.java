@@ -17,10 +17,4 @@ public class Player {
 	public void setCards(QueueUsingLinkedList<String> cards) {
 		this.cards = cards;
 	}
-//	@Override
-//	public String toString() {
-//		return "Player [name=" + name + ", cards=" + cards + "]";
-//	}
-	
-	
 }

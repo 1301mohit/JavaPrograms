@@ -1,5 +1,12 @@
 package org.bridgelabz.objectorientedprograms;
 
+/**
+ * Purpose: Pulses class
+ * 
+ * @author  Mohit Kumar 
+ * @version 1.0
+ * @since   10/01/2019
+ */
 public class Pulses {
 	private String name;
 	private double weight;

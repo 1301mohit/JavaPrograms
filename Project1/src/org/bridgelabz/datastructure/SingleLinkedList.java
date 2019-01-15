@@ -164,4 +164,14 @@ public class SingleLinkedList<T>{
 			p--;
 		}
 	}
+	
+	/*
+	 * Purpose: Check linkedlist is empty or not.
+	 */
+	public boolean isempty() {
+		if(head == null)
+			return true;
+		else
+			return false;
+	}
 }

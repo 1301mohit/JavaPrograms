@@ -1,5 +1,12 @@
 package org.bridgelabz.objectorientedprograms;
 
+/**
+ * Purpose: Wheat class
+ * 
+ * @author  Mohit Kumar
+ * @version 1.0
+ * @since   10/01/2019
+ */
 public class Wheats {
 	private String name;
 	private double weight;

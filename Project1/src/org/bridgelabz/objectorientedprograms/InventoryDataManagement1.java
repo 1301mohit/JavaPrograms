@@ -10,6 +10,13 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 
+/**
+ * Purpose: Inventory Details for Rice, Pulses and Wheats
+ *			with properties name, weight, price per kg.
+ *
+ * @author  Mohit Kumar 
+ * @version 1.0
+ */
 public class InventoryDataManagement1 {
 
 	public static void main(String[] args) throws JsonParseException, JsonMappingException, IOException {
@@ -24,8 +31,6 @@ public class InventoryDataManagement1 {
 				e.printStackTrace();
 			}
 			stockList = (JSONArray) obj;
-	            //System.out.println(stockList);
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -36,7 +41,6 @@ public class InventoryDataManagement1 {
 			str[i] =  stockList.get(i);
 		}
 		System.out.println(Arrays.toString(str));
-		//System.out.println(stockList.get(0).g);
 	}
 
 }

@@ -2,7 +2,9 @@ package org.bridgelabz.utility;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -22,6 +24,10 @@ import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 /******************************************************************************************
  *  purpose: Declare Utility Class implements methods which are called by any other class. 
@@ -32,6 +38,12 @@ import org.codehaus.jackson.map.ObjectMapper;
  ******************************************************************************************/
 
 public class Utility {
+	
+	//Create the static reference variable of ObjectMapper class.
+	private static ObjectMapper mapper;
+	static {
+		mapper = new ObjectMapper();
+	}
 	
 	//Create the static reference variable of Scanner class
 	static Scanner scanner = new Scanner(System.in);	
@@ -1658,10 +1670,12 @@ public class Utility {
 		return unorderedList;
 	}
 	
-	private static ObjectMapper mapper;
-	static {
-		mapper = new ObjectMapper();
-	}
+	/**
+	 * Purpose: This method helps to convert java to json.
+	 * 
+	 * @param   object
+	 * @return  String
+	 */
 	public static String convertJavaToJson(Object object) {
 		String jsonResult = "";
 		try {
@@ -1676,6 +1690,13 @@ public class Utility {
 		return jsonResult;
 	}
 	
+	/**
+	 * Purpose: This method helps to convert json to java.
+	 * 
+	 * @param   JsonString
+	 * @param   cls
+	 * @return  Generic type
+	 */
 	public static <T> T convertJsonToJava(String JsonString, Class<T> cls) {
 		T javaresult = null;
 			try {
@@ -1690,13 +1711,61 @@ public class Utility {
 			return javaresult;
 	}
 
+	/**
+	 * Purpose: By using this method we can replace string from the message. 
+	 * 
+	 * @param 	message
+	 * @param 	change
+	 * @param 	required
+	 * @return  String
+	 */
 	public static String convertString(String message, String change, String required) {
 		Pattern p = Pattern.compile(change);
 		Matcher m = p.matcher(message);
 		message = m.replaceAll(required);
 		return message;
 	}
-	
+
+	/**
+	 * Purpose: Search data from file.
+	 * 
+	 * @param   search user searched data.
+	 * @return  true or false.
+	 * @throws  NumberFormatException
+	 * @throws  IOException
+	 */
+	public static boolean hashingSearch(int search) throws NumberFormatException, IOException {
+		FileInputStream file = new FileInputStream("/home/admin1/Desktop/hashing/hashing.txt");
+		SingleLinkedList<Integer> arr[] = new SingleLinkedList[11];
+		for(int i=0; i<arr.length; i++) {
+			arr[i] = new SingleLinkedList<Integer>();
+		}
+		Scanner sc = new Scanner(file);
+		while(sc.hasNext()) {
+			int value = Integer.parseInt(sc.next());
+			int tempValue = value % 11;
+			arr[tempValue].add(Integer.toString(value));
+		}
+		sc.close();
+		System.out.println();
+		int value = search % 11;
+		int position = arr[value].search(Integer.toString(value));
+		if(position > 0)
+			arr[value].remove(position);
+		else
+			arr[value].add(Integer.toString(search));
+		FileOutputStream file1 = new FileOutputStream("/home/admin1/Desktop/hashing/hashing.txt");
+		for(int i=0; i<arr.length; i++) {
+			while(!arr[i].isempty())
+				file1.write(Integer.parseInt(arr[i].remove(i+1)));
+		}
+		file1.close();
+		if(position > 0)
+			return true;
+		else
+			return false;
+	}
+
 }
 
 

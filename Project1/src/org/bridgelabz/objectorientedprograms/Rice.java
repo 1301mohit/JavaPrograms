@@ -1,5 +1,12 @@
 package org.bridgelabz.objectorientedprograms;
 
+/**
+ * Purpose: Encapsulated class of Rice.
+ * 
+ * @author  Mohit Kumar
+ * @version 1.0
+ * @since   11/01/2019
+ */
 public class Rice {
 	private String name;
 	private double weight;

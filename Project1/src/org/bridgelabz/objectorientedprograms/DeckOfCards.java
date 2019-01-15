@@ -2,6 +2,16 @@ package org.bridgelabz.objectorientedprograms;
 
 import java.util.Random;
 
+/**
+ * Purpose: The cards using Random method and then
+ *			distribute 9 Cards to 4 Players and Print the Cards the received 
+ *			by the 4 Players using 2D Array.
+ *			
+ * @author  Mohit Kumar
+ * @version 1.0
+ * @since   13/01/2019
+ */
+
 public class DeckOfCards {
 
 	public static void main(String[] args) {
@@ -57,8 +67,6 @@ public class DeckOfCards {
 			System.out.println();
 			System.out.println();
 		}
-		
-		
 	}
 
 }

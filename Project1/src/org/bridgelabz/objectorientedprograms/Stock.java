@@ -1,8 +1,14 @@
 package org.bridgelabz.objectorientedprograms;
 
-//import java.io.Serializable;
+/**
+ * Purpose: Stock class
+ * 
+ * @author  Mohit Kumar
+ * @version 1.0
+ * @since   11/01/2019
+ */
 
-public class Stock //implements Serializable
+public class Stock
 {
 	@Override
 	public String toString() {

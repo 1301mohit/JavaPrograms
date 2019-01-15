@@ -14,8 +14,6 @@ public class StockReport {
 
 	public static void main(String[] args) throws JsonParseException, JsonMappingException, IOException 
 	{
-		
-
 		ArrayList<Stock> arr = new ArrayList<Stock>();
 		ObjectMapper mapper = new ObjectMapper();
 		double totalvalue = 0.0;
