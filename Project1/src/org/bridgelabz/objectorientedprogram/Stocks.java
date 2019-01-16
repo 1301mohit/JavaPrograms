@@ -16,44 +16,29 @@ public class Stocks {
 		this.numberOfShare = numberofshare;
 		this.pricePerShare = pricepershare;
 	}
-	
-	public String getstocksname() 
-	{
+	public String getStocksName() {
 		return stocksName;
 	}
-
-	public void setstocksname(String stocksname) 
-	{
-		this.stocksName = stocksname;
+	public void setStocksName(String stocksName) {
+		this.stocksName = stocksName;
 	}
-
-	public String getstockssymbol() 
-	{
+	public String getStocksSymbol() {
 		return stocksSymbol;
 	}
-
-	public void setstockssymbol(String stockssymbol) 
-	{
-		this.stocksSymbol = stockssymbol;
+	public void setStocksSymbol(String stocksSymbol) {
+		this.stocksSymbol = stocksSymbol;
 	}
-
-	public int getNumberofshare() 
-	{
+	public int getNumberOfShare() {
 		return numberOfShare;
 	}
-
-	public void setNumberofshare(int numberofshare) 
-	{
-		this.numberOfShare = numberofshare;
+	public void setNumberOfShare(int numberOfShare) {
+		this.numberOfShare = numberOfShare;
 	}
-
-	public int getPricepershare() 
-	{
+	public int getPricePerShare() {
 		return pricePerShare;
 	}
-
-	public void setPricepershare(int pricepershare) 
-	{
-		this.pricePerShare = pricepershare;
+	public void setPricePerShare(int pricePerShare) {
+		this.pricePerShare = pricePerShare;
 	}
+	
 }

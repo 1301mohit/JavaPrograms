@@ -14,7 +14,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
 
 public class StockAccount {
-	List<Stocks> stocklist=new ArrayList<>();
+	List<Stocks> stockList=new ArrayList<>();
 	List<String> transition=new ArrayList<>();
 	int amount;
 	
@@ -33,7 +33,8 @@ public class StockAccount {
 			try
 			{
 				file = new FileOutputStream("/home/admin1/Desktop/StockAccountDetails/"+name+".json");
-				new ObjectMapper().writeValue(new File("/home/admin1/Desktop/StockAccountDetails/"+name+".json"), this);
+				new ObjectMapper().writeValue(file , this);
+				//new ObjectMapper().writeValue(new File("/home/admin1/Desktop/StockAccountDetails/"+name+".json"), this);
 				file.close();
 			} 
 			catch (IOException e) 
@@ -52,13 +53,13 @@ public class StockAccount {
 		{
 			ObjectMapper ob=new ObjectMapper();
 	
-		StockAccount persontemp=(StockAccount)ob.readValue(new File("/home/admin1/Desktop/StockAccountDetails/"+name+".json"),new TypeReference<StockAccount>() {});
-	
-		this.stocklist=persontemp.stocklist;
+			StockAccount persontemp=ob.readValue(new File("/home/admin1/Desktop/StockAccountDetails/"+name+".json"),new TypeReference<StockAccount>() {});//
 
-		this.transition=persontemp.transition;
-		
-		this.amount=persontemp.amount;
+			this.stockList=persontemp.stockList;
+	
+			this.transition=persontemp.transition;
+			
+			this.amount=persontemp.amount;
 			
 		}
 		catch(Exception e)
@@ -71,9 +72,12 @@ public class StockAccount {
 	
 	public void setstockList(List<Stocks> stocklist)
 	{
-		this.stocklist=stocklist;
+		this.stockList=stocklist;
 	}
-	
+	public List<Stocks> getstockList()
+	{
+		return this.stockList;
+	}
 	public List<String> gettransition()
 	{
 		return this.transition;
@@ -145,9 +149,9 @@ public class StockAccount {
 			}
 			new ObjectMapper().writeValue(new File("/home/admin1/Desktop/StockAccountDetails/StockMain.json"), fill);
 			boolean stockfindflag=false;
-			for(int j=0;j<stocklist.size();j++)
+			for(int j=0;j<stockList.size();j++)
 			{
-				Stocks temp=stocklist.get(j);
+				Stocks temp=stockList.get(j);
 				if(temp.stocksSymbol.equals(symbol))
 				{
 					stockfindflag=true;
@@ -155,7 +159,7 @@ public class StockAccount {
 					SimpleDateFormat a=new SimpleDateFormat("dd MM yyyy HH mm SS");
 					String s=symbol+" buy  "+a.format(d);
 					transition.add(s);
-					stocklist.get(j).numberOfShare+=noofshare;
+					stockList.get(j).numberOfShare+=noofshare;
 					break;
 				}
 				
@@ -163,7 +167,7 @@ public class StockAccount {
 			
 			if(stockfindflag==false)
 			{
-				stocklist.add(new Stocks(name,symbol,noofshare,price));
+				stockList.add(new Stocks(name,symbol,noofshare,price));
 				Date d=new Date();
 				SimpleDateFormat a=new SimpleDateFormat("dd MM yyyy HH mm SS");
 				String s=symbol+" buy  "+a.format(d);
@@ -180,9 +184,9 @@ public class StockAccount {
 	{
 		try 
 		{
-			for(int i=0;i<stocklist.size();i++)
+			for(int i=0;i<stockList.size();i++)
 			{
-				Stocks temp=stocklist.get(i);
+				Stocks temp=stockList.get(i);
 				if(temp.stocksSymbol.equals(symbol))
 				{
 					if(temp.numberOfShare<noofshare)
@@ -190,13 +194,13 @@ public class StockAccount {
 						System.out.println("Not Have Sufficient Shares");
 						return;
 					}
-					stocklist.get(i).numberOfShare-=noofshare;
+					stockList.get(i).numberOfShare-=noofshare;
 					
 					Date d=new Date();
 					SimpleDateFormat a=new SimpleDateFormat("dd MM yyyy HH mm SS");
 					String s=symbol+" sell  "+a.format(d);
 					transition.add(s);
-					amount+=stocklist.get(i).pricePerShare*noofshare;
+					amount+=stockList.get(i).pricePerShare*noofshare;
 					break;
 				}
 			}
@@ -251,9 +255,9 @@ public class StockAccount {
 	{
 		System.out.println("StockName    StockSymbol   NoOfShare  SharePrice");
 		System.out.println();
-		for(int i=0;i<stocklist.size();i++)
+		for(int i=0;i<stockList.size();i++)
 		{
-			Stocks temp=stocklist.get(i);
+			Stocks temp=stockList.get(i);
 			System.out.println(temp.stocksName+"           "+temp.stocksSymbol+"           "+temp.numberOfShare+"           "+temp.pricePerShare);
 		}
 		System.out.println();
