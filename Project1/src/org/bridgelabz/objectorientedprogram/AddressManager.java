@@ -10,17 +10,28 @@ import org.bridgelabz.utility.Utility;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
 
+/**
+ * Purpose : Here we can define the methods of the address book application class menu.
+ * 
+ * @author   Mohit Kumar
+ * @version  1.0
+ * @since    16/01/2019
+ */
 public class AddressManager implements AddressManagerInterface{
 	ObjectMapper mapper=new ObjectMapper();
 	//Utility input=new Utility();
 	List<Person> list=new ArrayList<>();
 	AddressBookInterface addbook=new AddressBook();
 	String name;
-	boolean filealreadyopenflag=false;
+	boolean fileAlreadyOpenFlag=false;
 	boolean changemade=false;
+	
+	/*
+	 *Purpose: The purpose of the method to create new user.
+	 */
 	public void create()
 	{
-		if(filealreadyopenflag==true  && changemade==true)
+		if(fileAlreadyOpenFlag==true  && changemade==true)
 		{
 			System.out.println("Do You Want To Save Changes For Previous Open File");
 			System.out.println("1. Yes\n2. No");
@@ -28,11 +39,11 @@ public class AddressManager implements AddressManagerInterface{
 			if(ans==1)
 			{
 			save();
-			filealreadyopenflag=false;
+			fileAlreadyOpenFlag=false;
 			}
 			else
 			{
-				filealreadyopenflag=false;
+				fileAlreadyOpenFlag=false;
 			}
 		}
 		System.out.println("Give Name Of Address Book");
@@ -55,10 +66,14 @@ public class AddressManager implements AddressManagerInterface{
 			}
 		}
 	}
+	
+	/*
+	 * Purpose: open the file
+	 */
 	public boolean open()
 	{
 		boolean flag=false;
-		if(filealreadyopenflag==true)
+		if(fileAlreadyOpenFlag==true)
 		{
 			System.out.println("Do You Want To Save Changes For Previous Open File");
 			System.out.println("1. Yes\n2. No");
@@ -66,11 +81,11 @@ public class AddressManager implements AddressManagerInterface{
 			if(ans==1)
 			{
 			save();
-			filealreadyopenflag=false;
+			fileAlreadyOpenFlag=false;
 			}
 			else
 			{
-				filealreadyopenflag=false;
+				fileAlreadyOpenFlag=false;
 				list.clear();
 			}
 		}
@@ -89,7 +104,7 @@ public class AddressManager implements AddressManagerInterface{
 		
 		if(new File("/home/admin1/Desktop/AddressBooks/"+name+".json").exists())
 		{
-			filealreadyopenflag=true;
+			fileAlreadyOpenFlag=true;
 			flag=true;
 			this.name=name;
 			try 
@@ -110,12 +125,17 @@ public class AddressManager implements AddressManagerInterface{
 		return flag;
 	}
 	
+	/*
+	 * purpose: Save the changes in the file
+	 */
 	public void save() 
 	{
+		
 		try 
 		{
-			filealreadyopenflag=false;
-			mapper.writeValue(new File("/home/administrator/Desktop/AddressBooks/"+name+".json"), list);
+			System.out.println(name);
+			fileAlreadyOpenFlag=false;
+			mapper.writeValue(new File("/home/admin1/Desktop/AddressBooks/"+name+".json"), list);
 		}
 		catch (IOException e) 
 		{	
@@ -124,10 +144,14 @@ public class AddressManager implements AddressManagerInterface{
 		System.out.println("Changes Saved");
 	}
 	
+	/*
+	 *Purpose: Save the file in text format
+	 */
 	public void saveAs()
 	{
-		System.out.println("Enter For Format In Which You Want To save");
-		String format=Utility.next();
+		//System.out.println("Enter Format In Which FormatYou Want To save");
+		//String format=Utility.next();
+		String format = "txt";
 		try {
 			
 		FileOutputStream fos=new FileOutputStream("/home/admin1/Desktop/AddressBooks/"+name+"."+format);
@@ -162,9 +186,12 @@ public class AddressManager implements AddressManagerInterface{
 		
 	}
 	
+	/*
+	 * purpose: close the current file
+	 */
 	public void close()
 	{
-		if(filealreadyopenflag==true && changemade==true)
+		if(fileAlreadyOpenFlag==true && changemade==true)
 		{
 			System.out.println("Do You Want To Save Changes For Previous Open File");
 			System.out.println("1. Yes\n2. No");
@@ -172,18 +199,18 @@ public class AddressManager implements AddressManagerInterface{
 			if(ans==1)
 			{
 			save();
-			filealreadyopenflag=false;
+			fileAlreadyOpenFlag=false;
 			System.out.println("File Closed");
 			}
 			else
 			{
-				filealreadyopenflag=false;
+				fileAlreadyOpenFlag=false;
 				System.out.println("File Closed");
 			}
 		}
-		else if(filealreadyopenflag==true && changemade==false)
+		else if(fileAlreadyOpenFlag==true && changemade==false)
 		{
-			filealreadyopenflag=false;
+			fileAlreadyOpenFlag=false;
 		}
 	}
 }

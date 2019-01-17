@@ -5,9 +5,15 @@ import java.util.List;
 
 import org.bridgelabz.utility.Utility;
 
+/**
+ * Purpose: AddressBook class and perform add, edit, delete, sortByName, sortByZip and print in this class.
+ * 
+ * @author  Mohit Kumar
+ * @version 1.0
+ * @since   16/01/2019
+ */
 public class AddressBook implements AddressBookInterface{
 	
-	//Utility input=new Utility();
 	List<Person> list;
 	String firstname="";
 	String lastname="";
@@ -16,55 +22,9 @@ public class AddressBook implements AddressBookInterface{
 	String state="";
 	String phone="";
 	boolean changesmade=false;
-//	@Override
-//	public boolean operation(List<Person> receiveList)
-//	{
-//		list=receiveList;
-//	//	boolean state=true;
-//		int Answer=0;
-//		
-//		do {
-//			System.out.println("Choose Operation You Want To Do");
-//			System.out.println("1.Add");
-//			System.out.println("2.Edit");
-//			System.out.println("3.Delete");
-//			System.out.println("4.SortByName");
-//			System.out.println("5.SortByZip");
-//			System.out.println("6.Print");
-//			System.out.println("7.Exit");
-//			Answer=input.getInt();
-//			switch(Answer)
-//			{
-//				case 1:
-//					add();
-//					break;
-//				case 2:
-//					edit();
-//					break;
-//				case 3:
-//					delete();
-//					break;
-//				case 4:
-//					sortByName();
-//					break;
-//				case 5:
-//					sortByZip();
-//					break;
-//				case 6:
-//					print(list);
-//					break;
-//				case 7:
-//					System.out.println("Exiting");
-//					break;
-//				default :
-//					System.out.println("Invalid Entry Re-Enter");
-//					break;
-//			}
-//					
-//		}while(Answer!=7);
-//		return changesmade;
-//	}
+
 	
+	//add new details in address book
 	public void add()
 	{
 		changesmade=true;
@@ -84,6 +44,7 @@ public class AddressBook implements AddressBookInterface{
 		list.add(tempperson);
 	}
 	
+	//edit details of address book
 	public void edit()
 	{
 		changesmade=true;
@@ -150,6 +111,7 @@ public class AddressBook implements AddressBookInterface{
 		}
 	}
 	
+	//delete the details of address book
 	public void delete()
 	{
 		changesmade=true;
@@ -175,6 +137,7 @@ public class AddressBook implements AddressBookInterface{
 		}
 	}
 	
+	//Sort the details of the address book by name
 	public void sortByName()
 	{
 		List<Person> listTemp=new ArrayList<>();
@@ -199,6 +162,7 @@ public class AddressBook implements AddressBookInterface{
 		
 	}
 	
+	//sort the address details by zip
 	public void sortByZip()
 	{
 		List<Person> listTemp=new ArrayList<>();
@@ -223,28 +187,13 @@ public class AddressBook implements AddressBookInterface{
 		print(listTemp);
 	}
 	
-//	public void print(List<Person> listprint)
-//	{
-//		System.out.println("FirstName   LastName    City        State       Zip         PhoneNumber \n");
-//		String spaces="            ";
-//		for(int i=0;i<listprint.size();i++)
-//		{
-//			System.out.print(listprint.get(i).firstname+spaces.substring(listprint.get(i).firstname.length(),spaces.length()));
-//			System.out.print(listprint.get(i).lastname+spaces.substring(listprint.get(i).lastname.length(),spaces.length()));
-//			System.out.print(listprint.get(i).address.city+spaces.substring(listprint.get(i).address.city.length(),spaces.length()));
-//			System.out.print(listprint.get(i).address.state+spaces.substring(listprint.get(i).address.state.length(),spaces.length()));
-//			System.out.print(listprint.get(i).address.zip+spaces.substring(listprint.get(i).address.zip.length(),spaces.length()));
-//			System.out.print(listprint.get(i).address.phone+spaces.substring(listprint.get(i).address.phone.length(),spaces.length()));
-//			System.out.println();
-//			
-//		}
-//		System.out.println();
-//	}
 
+	/*
+	 * perform the operation according to the user input.
+	 */
 	@Override
 	public boolean operation(List<Person> receiveList) {
 		list=receiveList;
-		//	boolean state=true;
 			int Answer=0;
 			
 			do {
@@ -288,7 +237,12 @@ public class AddressBook implements AddressBookInterface{
 			}while(Answer!=7);
 			return changesmade;
 	}
-
+	
+	/*
+	 * Print the details of the address book.
+	 * 
+	 * @param List All the data of the address book.
+	 */
 	@Override
 	public void print(List<Person> listprint) {
 		System.out.println("FirstName   LastName    City        State       Zip         PhoneNumber \n");

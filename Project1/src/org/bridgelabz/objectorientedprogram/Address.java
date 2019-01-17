@@ -1,5 +1,12 @@
 package org.bridgelabz.objectorientedprogram;
 
+/**
+ * Purpose: Pojo class of Address
+ * 
+ * @author  Mohit Kumar
+ * @version 1.0
+ * @since   16/01/2019
+ */
 public class Address {
 	 String city;
 	 String zip;

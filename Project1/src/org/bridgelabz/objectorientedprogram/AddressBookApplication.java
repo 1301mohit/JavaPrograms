@@ -2,11 +2,17 @@ package org.bridgelabz.objectorientedprogram;
 
 import org.bridgelabz.utility.Utility;
 
+/**
+ * Purpose: We can perform operation according to the user input according
+ *          to the user input we can call the methods of Address manager.
+ *          
+ * @version 1.0
+ * @since   17/01/2019
+ */
 public class AddressBookApplication {
 	public static void main(String[] args) {
 		AddressManagerInterface manager=new AddressManager();
 		System.out.println("Welcome To Address Book");
-		
 		int Answer=0;
 		do {
 			System.out.println("Choose Operation You Want To Do");
